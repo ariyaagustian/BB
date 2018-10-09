@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>403 Forbidden</title>
-</head>
-<body>
+<?php
 
-<p>Directory access is forbidden.</p>
+include 'template/v_header.php';
+include 'template/v_sidebar.php';
+include 'dashboard/main.php';
+include 'template/v_footer.php';
 
-</body>
-</html>
+ ?>
