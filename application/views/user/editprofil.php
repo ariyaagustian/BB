@@ -1,6 +1,7 @@
 <?php
   $this->load->view('template/v_header');
  ?>
+
  <!-- Awal sidebar-->
  <body class="">
    <div class="wrapper ">
@@ -15,15 +16,15 @@
      <br>
    <div class="sidebar-wrapper">
      <ul class="nav">
-       <li class="nav-item  ">
-         <a class="nav-link" href="<?php echo base_url();?>User_controller/dash">
+       <li class="nav-item ">
+         <a class="nav-link" href=""> <!-- blm dirubah-->
            <i class="material-icons"></i>
            <i class="material-icons">dashboard</i>
            <p>Dashboard</p>
          </a>
        </li>
-       <li class="nav-item active ">
-         <a class="nav-link" href="<?php echo base_url();?>User_controller/tampil"> <!-- blm dirubah-->
+       <li class="nav-item  active ">
+         <a class="nav-link" href=""> <!-- blm dirubah-->
            <i class="material-icons"></i>
            <i class="material-icons">people</i>
            <p>Profil</p>
@@ -120,21 +121,23 @@
                 </div>
                 <div class="card-body">
                   <?php
-                      foreach($daftar_user as $edit){
-                        if($edit->id == $this->session->userdata('id')){
+                      foreach($daftar_user as $row){
+                      if ($row->id == $this->session->userdata('id')){
+                      $id=$this->session->userdata('id');
                   ?>
-                  <form class="" action="<?php echo base_url();?>User_controller/simpan_edit_user" method="post">
+
+                  <form method="POST" action="<?php echo base_url() ?>User_controller/simpan_edit_user">
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Nama</label>
-                          <input type="text" class="form-control" value="<?php echo $edit->nama; ?>" id="nama" name="nama"> <?php form_error('nama') ?>
+                          <input type="text" class="form-control" value="<?php echo $row->nama; ?>" id="nama" name="nama"> <?php form_error('nama') ?>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">NIM</label>
-                          <input type="text" class="form-control" value="<?php echo $edit->nim?>" id="nim" name="nim">
+                          <input type="text" class="form-control" value="<?php echo $row->nim?>" id="nim" name="nim">
                         </div>
                       </div>
                         <div class="col-md-12">
@@ -170,25 +173,25 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Telepon</label>
-                          <input type="text" class="form-control" value="<?php echo $edit->tlp?>" name="tlp">
+                          <input type="text" class="form-control" value="<?php echo $row->tlp?>" name="tlp">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Email</label>
-                          <input type="text" class="form-control" value="<?php echo $edit->email?>" id="email" name="email">
+                          <input type="text" class="form-control" value="<?php echo $row->email?>" id="email" name="email">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Username</label>
-                          <input type="text" class="form-control" value="<?php echo $edit->username?>" id="username" name="username">
+                          <input type="text" class="form-control" value="<?php echo $row->username?>" id="username" name="username">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Password</label>
-                          <input type="password" class="form-control" id="password" name="password" >
+                          <input type="password" class="form-control" id="password" name="password" value="<?php echo $row->password?>">
                         </div>
                       </div>
                     </div>
@@ -199,22 +202,11 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card card-profile">
-                <div class="card-avatar">
-                  <a href="#pablo">
-                    <img class="img" src="<?php echo base_url();?>assets/img/faces/marc.jpg" />
-                  </a>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Upload Foto</h4>
-                  <a href="#pablo" class="btn btn-primary btn-round">Upload</a>
-                </div>
-              </div>
             </div>
+
           </div>
         </div>
       </div>
-      <?php
-    } } $this->load->view('template/v_footer');
-       ?>
+    </div>
+    <?php  } }
+    $this->load->view('template/v_footer');?>

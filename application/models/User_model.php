@@ -34,13 +34,6 @@ class User_model extends CI_Model{
         $query=$this->db->query("DELETE FROM user WHERE id='$id'");
     }
 
-    function edit_user($id)
-    {
-        $q="SELECT * FROM  user WHERE id='$id'";
-        $query=$this->db->query($q);
-        return $query->row();
-    }
-
     function simpan_edit_user( $nama,$level, $username, $password, $email, $nim,$jurusan,$tlp)
     {
         $data = array(
@@ -55,4 +48,5 @@ class User_model extends CI_Model{
         $this->db->where('id', $this->session->userdata('id'));
         $this->db->update('user', $data);
     }
-}
+
+  }

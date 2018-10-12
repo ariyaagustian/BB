@@ -4,6 +4,7 @@ class User_controller extends CI_Controller{
     function __Construct()
     {
         parent ::__construct();
+        $this->load->helper(array('form', 'url'));
         $this->load->model('User_model');
     }
     function index()
@@ -30,18 +31,21 @@ class User_controller extends CI_Controller{
         if($level === '2'){
           $this->load->view('user/Dashboard');
         }
-        else  $this->load->view('admin/Dashboard');
+        else  {
+          $this->load->view('admin/Dashboard');
+        }
       }
     }
 
     function dash()
     {
-      if($this->session->userdata('level')=='1'){
+      if($this->session->userdata('level')== 1){
         $this->load->view('admin/Dashboard');
       }
       else
         $this->load->view('user/Dashboard');
     }
+
     function insert()
     {
       $data['judul'] = 'Insert Data User';
@@ -66,9 +70,9 @@ class User_controller extends CI_Controller{
       $data['judul'] = 'Menampilkan Data dari Database Menggunakan Codeigniter';
       $data['daftar_user'] = $this->User_model->get_user_all();
       if($this->session->userdata('level') == 1 ){
-        $this->load->view('admin/daftar_user', $data);}
+        $this->load->view('admin/user_list', $data);}
       else{
-        $this->load->view('user/editprofil', $data);
+        $this->load->view('user/profil',$data);
         }
       }
 
@@ -79,6 +83,7 @@ class User_controller extends CI_Controller{
         $data['daftar_user'] = $this->User_model->get_user_all();
         $this->load->view('admin/daftar_user', $data);
     }
+
     function delete_user($id)
     {
         $this->load->model('User_model');
@@ -86,15 +91,19 @@ class User_controller extends CI_Controller{
         redirect('User_controller/hapus');
     }
 
-    function edit_user($id)
+    function edit_user()
     {
-        $this->load->model('User_model');
-        $data['edit']=$this->User_model->edit_user($id);
-        $this->load->view('profil/editprofil', $data);
-    }
+      $this->load->model('User_model');
+      $data['judul'] = 'Menampilkan Data dari Database Menggunakan Codeigniter';
+      $data['daftar_user'] = $this->User_model->get_user_all();
+      if($this->session->userdata('level') == 2 ){
+        $this->load->view('user/editprofil',$data);
+        }
+      }
 
     function simpan_edit_user($id)
     {
+        $id=$this->session->userdata('id');
         $nama = $this->input->post('nama');
         $level = $this->input->post('level');
         $username = $this->input->post('username');
@@ -117,4 +126,8 @@ class User_controller extends CI_Controller{
           redirect('User_controller');
       }
 
+    function timeline()
+    {
+      $this->load->view('timeline/Dashboard');
     }
+  }

@@ -144,7 +144,7 @@
                         <li>
                             <a href="#"><i class="fa fa-user fa-fw"></i> Administrator<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li> <a href="<?=base_url()?>Admin/user_list"> &raquo; User List</a> </li>
+                                <li> <a href="<?=base_url('admin/user_list')?>"> &raquo; User List</a> </li>
                                 <li> <a href="<?=base_url()?>">&raquo; Ranking List</a> </li>
                             </ul>
                         </li>
@@ -166,46 +166,3 @@
         <!-- /.navbar-static-side -->
         </nav>
         <!--Akhir Sidebar -->
-<tbody>
-  <p>ini dashboard admin</p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><ol class="breadcrumb" style="margin-bottom: 5px;">
-    <li><a href="#">rubyrb</a></li>
-    <li><a href="#">Library</a></li>
-    <li class="active">Data</li>
-  </ol>
-</tbody>
-
-<tfoot>
-
-
-<!--  awal footer-->
-<div class="col-lg-12 text-center" style="padding:5px;"><small>&copy; 2017 by <a target="_blank" href="http://rudiliu.com">Rudi Liu</a></small></div>
-</div>
-<!-- /#wrapper -->
-
-<!-- jQuery -->
-
-<script src="<?=base_url()?>assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="<?=base_url()?>assets/js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="<?=base_url()?>assets/js/metisMenu.min.js"></script>
-
-<!-- DataTables JavaScript -->
-<script src="<?=base_url()?>assets/js/jquery.dataTables.min.js"></script>
-<script src="<?=base_url()?>assets/js/dataTables.bootstrap.min.js"></script>
-<script src="<?=base_url()?>assets/js/bootstrap-editable.min.js"></script>
-<script src="<?=base_url()?>assets/js/bootstrap-editable.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="<?=base_url()?>assets/js/sb-admin-2.js"></script>
-
-
-
-
-</tfoot>
-</body>
-
-</html>
