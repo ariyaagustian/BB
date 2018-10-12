@@ -26,29 +26,28 @@
 		<div class="container-login100" style="background-image: url('<?php echo base_url();?>assets/login/images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 
-        <?php if(!empty($flashdata)) {echo '<div class="flashdatax">'.$flashdata.'  </div>';} ?>
-
-				<form class="login100-form validate-form" method="POST" name="frm" action="<?php echo base_url()?>home/cekuser">
+				<form class="form-signin" action="<?php echo site_url('User_controller/auth');?>" method="post">
 					<span class="login100-form-title p-b-49">
 						Login Dulu Yuk!!
 					</span>
-
-					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+					<div class="panel-body">
+						 <?php echo $this->session->flashdata('msg');?>
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Masukan Username">
 						<span class="label-input100">Username</span>
-						<input class="input100" type="text" placeholder="Type your username" id="user" name="user">
+						<input class="input100" type="text" placeholder="Masukan Username" id="username" name="username">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
+					<div class="wrap-input100 validate-input" data-validate="Masukan Password">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" placeholder="Type your password" id="pass" name="pass">
+						<input class="input100" type="password" placeholder="Masukan Password" id="password" name="password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
           <br>
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button class="login100-form-btn" name="login">
 								Login
 							</button>
 						</div>
@@ -61,7 +60,7 @@
 					</div>
 
           <center>
-						<a href="<?php echo base_url();?>home/user_add" class="txt2">
+						<a href="<?php echo base_url();?>User_controller/insert" class="txt2">
 							Buat Akun Disini
 						</a>
           </center>

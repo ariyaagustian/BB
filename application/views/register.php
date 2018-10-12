@@ -25,11 +25,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('<?php echo base_url();?>assets/login/images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-
-        <?php if(!empty($flashdata)) {echo $flashdata;} ?>
-
-
-				<form class="login100-form validate-form" method="POST" name="frm" action="<?php echo base_url()?>home/adduser">
+				<form class="login100-form validate-form" method="POST" action="simpan_user">
 					<span class="login100-form-title p-b-49">
 						Buat Akun Baru
 					</span>
@@ -42,13 +38,13 @@
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "NIM harus diisi !!">
 						<span class="label-input100">NIM</span>
-						<input class="input100" type="text" placeholder="Masukan NIM" id="nim" name="nim">
+						<input class="input100" type="text" placeholder="Masukan NIM" id="nim" name="nim" >
 						<span class="focus-input100" data-symbol="&#9783;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Jurusan harus diisi !!">
 						<span class="label-input100">Jurusan</span>
-						<select class="form-control"  name="jurusan">
+						<select class="form-control"  name="jurusan" >
 								<option value="teknik informatika">Teknik Informatika</option>
 								<option value="Sistem Informasi">Sistem Informasi</option>
 								<option value="Teknik Komputer">Teknik Komputer</option>
@@ -84,21 +80,21 @@
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Email harus diisi !!">
 						<span class="label-input100">Email</span>
-						<input class="input100" type="text" placeholder="Masukan Email" id="email" name="email">
+						<input class="input100" type="text" placeholder="Masukan Email" id="email" name="email" >
 						<span class="focus-input100" data-symbol="&#9993;"></span>
 					</div>
 
 					<br><br><br>
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username harus diisi !!">
 						<span class="label-input100">Username</span>
-						<input class="input100" type="text" placeholder="Masukan Username Baru" id="user" name="user">
+						<input class="input100" type="text" placeholder="Masukan Username Baru" id="username" name="username">
 
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" placeholder="Masukan Password Baru" id="pass" name="pass">
+						<input class="input100" type="password" placeholder="Masukan Password Baru" id="password" name="password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 
@@ -117,7 +113,7 @@
             <br>
 
             <div class="text-right p-t-8 p-b-31">Sudah punya akun? <br>
-              <a href="<?php echo base_url();?>home/user_login">
+              <a href="<?php echo base_url();?>User_controller/validate_login()">
               LOGIN</a>
 
 					</div>
