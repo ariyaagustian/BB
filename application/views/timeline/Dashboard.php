@@ -1,6 +1,3 @@
-<?php
-  $this->load->view('template/v_header');
-?>
 <!-- Awal sidebar-->
 <body class="">
   <div class="wrapper ">
@@ -16,33 +13,32 @@
   <div class="sidebar-wrapper">
     <ul class="nav">
       <li class="nav-item ">
-        <a class="nav-link" href="<?php echo base_url();?>User_controller/dash">
-          <i class="material-icons"></i>
+        <a class="nav-link" href="<?php echo base_url();?>User_controller/dash"> <!-- blm dirubah-->
           <i class="material-icons">dashboard</i>
           <p>Dashboard</p>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item ">
         <a class="nav-link" href="<?php echo base_url();?>User_controller/tampil"> <!-- blm dirubah-->
           <i class="material-icons"></i>
           <i class="material-icons">people</i>
           <p>Profil</p>
         </a>
       </li>
-      <li class="nav-item active ">
-        <a class="nav-link" href="">
+      <li class="nav-item active">
+        <a class="nav-link" href="<?php echo base_url();?>User_controller/thread">
           <i class="material-icons">timeline</i>
           <p>Timeline</p>
         </a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="./tables.html">
           <i class="material-icons">content_paste</i>
           <p>History</p>
         </a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="User_controller/logout">
+        <a class="nav-link" href="logout">
           <i class="material-icons">logout</i>
           <p>Logout</p>
         </a>
@@ -56,64 +52,98 @@
 </div>
 <div class="main-panel">
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-    <div class="container-fluid">
-      <div class="navbar-wrapper">
-        <a class="navbar-brand" href="#pablo">Timeline</a>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="navbar-toggler-icon icon-bar"></span>
-        <span class="navbar-toggler-icon icon-bar"></span>
-        <span class="navbar-toggler-icon icon-bar"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#pablo">
-              <i class="material-icons">dashboard</i>
-              <p class="d-lg-none d-md-block">
-                Stats
-              </p>
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="material-icons">notifications</i>
-              <span class="notification">5</span>
-              <p class="d-lg-none d-md-block">
-                Some Actions
-              </p>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Mike John responded to your email</a>
-              <a class="dropdown-item" href="#">You have 5 new tasks</a>
-              <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-              <a class="dropdown-item" href="#">Another Notification</a>
-              <a class="dropdown-item" href="#">Another One</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#pablo">
-              <i class="material-icons">message</i>
-              <p class="d-lg-none d-md-block">
-                Account
-              </p>
-            </a>
-          </li>
-        </ul>
-      </div>
+  <!-- awal header thread -->
+    <br>
+    <br>
+    <br>
+    <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-2 ml-auto mr-auto">
+        <div class="row">
+          <div class="col-md-2">
+            <a href="<?php echo base_url();?>User_controller/thread/1">
+    					<button class="alert alert-info btn btn-primary btn-block" onclick="demo.showNotification('top','left')"><i class="material-icons">laptop_mac</i><br>TIK</button>
+    				</a>
+          </div>
+    			<div class="col-md-2">
+            <a href="<?php echo base_url();?>User_controller/thread/2">
+    					<button class="alert alert-success btn btn-primary btn-block" onclick="demo.showNotification('top','left')"><i class="material-icons">attach_money</i><br>Ekonomi</button>
+    				</a>
+          </div>
+          <div class="col-md-2">
+            <a href="<?php echo base_url();?>User_controller/thread/3">
+    					<button class="alert alert-warning btn btn-primary btn-block" onclick="demo.showNotification('top','center')"><i class="material-icons">translate</i><br>Sastra</button>
+    				</a>
+          </div>
+    			<div class="col-md-2">
+            <a href="<?php echo base_url();?>User_controller/thread/4">
+    					<button class="alert alert-primary btn btn-primary btn-block" onclick="demo.showNotification('top','center')"><i class="material-icons" color_lens="white">wc</i><br>FISIP</button>
+    				</a>
+          </div>
+          <div class="col-md-2">
+    				<a href="<?php echo base_url();?>User_controller/thread/5">
+    					<button class=" alert alert-danger btn btn-primary btn-block" onclick="demo.showNotification('top','right')"><i class="material-icons">color_lens</i><br>Desain</button>
+    				</a>
+          </div>
+    			<div class="col-md-2">
+    				<a href="<?php echo base_url();?>User_controller/thread/6">
+    					<button class="alert alert-info btn btn-primary btn-block" onclick="demo.showNotification('top','right')"><i class="material-icons">people</i><br>Hukum</button>
+    				</a>
+          </div>
+          </div>
+          </div>
+          </div>
+
+          </div>
+  <!-- akhir header thread -->
+ <div class="col-md-12">
+<br>
+	<div class="card">
+    <div class="card-header card-header-tabs card-header-primary">
+			<div class="row">
+				<div class="col-md-5">
+					<h3 class="card-title">
+						<?php
+							if(!empty($thread)){
+								foreach($thread as $row){
+									if($row->id_thread == $id_thread){
+										echo $row->nama;
+									}
+                    		}
+											}
+											?>
+					</h3>
+				</div>
+				<div class="col-md-5">
+					<a class="btn btn-warning btn-round pull-right"  href="<?php echo base_url(); ?>User_controller/tambahtimeline/<?php echo $id_thread; ?>"> Buat Thread </a>
+				</div>
+			</div>
     </div>
-  </nav>
-  <!-- End Navbar -->
-
-<!-- Akhir sidebar-->
-<tbody>
-
-</tbody>
-
-<tfoot>
- <?php $this->load->view('template/v_footer');
- ?>
- </tfoot>
+    <div class="card-body table-responsive">
+      <table class="table table-hover">
+				<tbody>
+                  <?php
+                    if(!empty($forumDisplayFill)){
+                      foreach($forumDisplayFill as $data){
+                        ?>
+          <tr>
+						<td>
+							Judul : <a href="<?php echo base_url() ?>User_controller/detailThread/<?php echo $data->id_thread ?>/<?php echo $data->id_timeline?>" class="judul"><label><?php echo $data->judul?></label></a>
+							<br>
+							Oleh &ensp;: <label class="user"><?php echo $data->nama ?></label> |   <label><?php echo $data->tanggal?> </label>  <br>
+							Batas Cari Mentor :<label class="tanggal"><?php echo $data->datementor?> </label>  <br><br>
+						</td>
+						</tr>
+							<?php
+								}
+									} else { ?>
+										<tr>
+							<td colspan="2"><center> Thread Belum Tersedia </center>
+							</td>
+						</tr>
+					<?php }	?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

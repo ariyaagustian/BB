@@ -1,6 +1,3 @@
-<?php
-  $this->load->view('template/v_header');
-?>
 <!-- Awal sidebar-->
 <body class="">
   <div class="wrapper ">
@@ -15,34 +12,33 @@
     <br>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="nav-item active  ">
-        <a class="nav-link" href="<?php echo base_url();?>User_controller/dash">
-          <i class="material-icons"></i>
+      <li class="nav-item active">
+        <a class="nav-link" href="<?php echo base_url();?>User_controller/dash"> <!-- blm dirubah-->
           <i class="material-icons">dashboard</i>
           <p>Dashboard</p>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item ">
         <a class="nav-link" href="<?php echo base_url();?>User_controller/tampil"> <!-- blm dirubah-->
           <i class="material-icons"></i>
           <i class="material-icons">people</i>
           <p>Profil</p>
         </a>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="<?php echo base_url();?>User_controller/timeline">
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url();?>User_controller/thread">
           <i class="material-icons">timeline</i>
           <p>Timeline</p>
         </a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="./tables.html">
           <i class="material-icons">content_paste</i>
           <p>History</p>
         </a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="User_controller/logout">
+        <a class="nav-link" href="logout">
           <i class="material-icons">logout</i>
           <p>Logout</p>
         </a>
@@ -56,61 +52,9 @@
 </div>
 <div class="main-panel">
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-    <div class="container-fluid">
-      <div class="navbar-wrapper">
-        <a class="navbar-brand" href="#pablo">Profil</a>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="navbar-toggler-icon icon-bar"></span>
-        <span class="navbar-toggler-icon icon-bar"></span>
-        <span class="navbar-toggler-icon icon-bar"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#pablo">
-              <i class="material-icons">dashboard</i>
-              <p class="d-lg-none d-md-block">
-                Stats
-              </p>
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="material-icons">notifications</i>
-              <span class="notification">5</span>
-              <p class="d-lg-none d-md-block">
-                Some Actions
-              </p>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Mike John responded to your email</a>
-              <a class="dropdown-item" href="#">You have 5 new tasks</a>
-              <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-              <a class="dropdown-item" href="#">Another Notification</a>
-              <a class="dropdown-item" href="#">Another One</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#pablo">
-              <i class="material-icons">message</i>
-              <p class="d-lg-none d-md-block">
-                Account
-              </p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- End Navbar -->
 
-<!-- Akhir sidebar-->
-<tbody>
-  <div class="content">
+<div class="content">
+  <p>Dashboard</p>
         <div class="container-fluid">
 
           <div class="row">
@@ -129,20 +73,11 @@
                         <th width="40%" align="center">
                           Nama
                         </th>
-                        <th width="10%">
-                          <img src="<?php echo base_url();?>assets/dass/assets/img/5.png" width="50%">
+                        <th width="40%" align="center">
+                          Jurusan
                         </th>
                         <th width="10%">
-                          <img src="<?php echo base_url();?>assets/dass/assets/img/4.png" width="50%">
-                        </th>
-                        <th width="10%">
-                          <img src="<?php echo base_url();?>assets/dass/assets/img/3.png" width="50%">
-                        </th>
-                        <th width="10%">
-                          <img src="<?php echo base_url();?>assets/dass/assets/img/2.png" width="50%">
-                        </th>
-                        <th width="10%">
-                          <img src="<?php echo base_url();?>assets/dass/assets/img/1.png" width="50%">
+                          <img src="<?php echo base_url();?>assets/img/bintang1.png" width="50%">
                         </th>
                       </thead>
                       <tbody align="center">
@@ -159,15 +94,7 @@
                           <td>
                             1
                           </td>
-                          <td class="text-primary">
-                            2
-                          </td>
-                          <td>
-                            9
-                          </td>
-                          <td>
-                            3
-                          </td>
+
                         </tr>
                         <tr>
                           <td >
@@ -182,15 +109,7 @@
                           <td>
                             1
                           </td>
-                          <td class="text-primary">
-                            2
-                          </td>
-                          <td>
-                            9
-                          </td>
-                          <td>
-                            3
-                          </td>
+
                         </tr>
                         <tr>
                           <td >
@@ -205,15 +124,7 @@
                           <td>
                             1
                           </td>
-                          <td class="text-primary">
-                            2
-                          </td>
-                          <td>
-                            9
-                          </td>
-                          <td>
-                            3
-                          </td>
+
                         </tr>
                         <tr>
                           <td >
@@ -228,15 +139,7 @@
                           <td>
                             1
                           </td>
-                          <td class="text-primary">
-                            2
-                          </td>
-                          <td>
-                            9
-                          </td>
-                          <td>
-                            3
-                          </td>
+
                         </tr>
                         <tr>
                           <td >
@@ -251,15 +154,7 @@
                           <td>
                             1
                           </td>
-                          <td class="text-primary">
-                            2
-                          </td>
-                          <td>
-                            9
-                          </td>
-                          <td>
-                            3
-                          </td>
+
                         </tr>
                         <tr>
                           <td >
@@ -274,15 +169,7 @@
                           <td>
                             1
                           </td>
-                          <td class="text-primary">
-                            2
-                          </td>
-                          <td>
-                            9
-                          </td>
-                          <td>
-                            3
-                          </td>
+
                         </tr>
                       </tbody>
                     </table>
@@ -290,7 +177,9 @@
                 </div>
               </div>
             </div>
-
+            <div class="col-lg-12" style="position:fixed;bottom: 5%;left: 88%; width: 150px;text-align: center;border-radius: 100%;">
+                                    <img class="add_user" src="<?=base_url()?>assets/images/add.png" data-toggle="modal" data-target="#addUser" />
+                                </div>
       <footer class="footer">
         <div class="container-fluid">
           <nav class="float-left">
@@ -328,7 +217,3 @@
       </footer>
     </div>
   </div>
-
-</tbody>
- <?php $this->load->view('template/v_footer');
- ?>

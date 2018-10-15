@@ -340,6 +340,10 @@ html {
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
+judul{
+  color: #212529;
+}
+
 @-ms-viewport {
   width: device-width; }
 

@@ -22,7 +22,7 @@ class Upload extends CI_Controller{
 
 		if ( ! $this->upload->do_upload('berkas')){
 			$error = array('error' => $this->upload->display_errors());
-			$this->load->view('user/ediprofil', $error);
+			$this->load->view('user/foto', $error);
 		}else{
 			$data = array('upload_data' => $this->upload->data());
       $this->load->view('v_upload_sukses', $data);

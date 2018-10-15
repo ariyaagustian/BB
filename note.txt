@@ -1,0 +1,8 @@
+<h1>Welcome Back <?php echo $this->session->userdata('username');?></h1>
+
+
+
+                          <?php
+              							if(!empty($forumDisplay)){
+              								foreach($forumDisplay as $row){
+              									if($row->id == $id){ ?>

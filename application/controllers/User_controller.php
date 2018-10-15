@@ -17,8 +17,8 @@ class User_controller extends CI_Controller{
     $password    = md5($this->input->post('password'));
 
     $validate = $this->User_model->validate($username,$password);
-    if($validate->num_rows() > 0){
-      $data  = $validate->row_array();
+    if($validate->num_rows() >0 ) {
+      $data      = $validate->row_array();
       $username  = $data['username'];
       $level     = $data['level'];
       $sesdata = array(
@@ -29,7 +29,10 @@ class User_controller extends CI_Controller{
           'logged_in' => TRUE );
         $this->session->set_userdata($sesdata);       //access login for user
         if($level === '2'){
+          $this->load->view('template/v_header');
+          $this->load->view('template/v_sidebar');
           $this->load->view('user/Dashboard');
+          $this->load->view('template/v_footer');
         }
         else  {
           $this->load->view('admin/Dashboard');
@@ -43,7 +46,10 @@ class User_controller extends CI_Controller{
         $this->load->view('admin/Dashboard');
       }
       else
+        $this->load->view('template/v_header');
+        $this->load->view('template/v_sidebar');
         $this->load->view('user/Dashboard');
+        $this->load->view('template/v_footer');
     }
 
     function insert()
@@ -69,10 +75,17 @@ class User_controller extends CI_Controller{
       $this->load->model('User_model');
       $data['judul'] = 'Menampilkan Data dari Database Menggunakan Codeigniter';
       $data['daftar_user'] = $this->User_model->get_user_all();
-      if($this->session->userdata('level') == 1 ){
-        $this->load->view('admin/user_list', $data);}
+      if($this->session->userdata('level') == 1){
+      $this->load->view('template/v_header');
+      $this->load->view('template/v_sidebar');
+      $this->load->view('admin/user_list', $data);
+      $this->load->view('template/v_footer');  }
       else{
+        //echo $this->session->userdata('id');
+        $this->load->view('template/v_header');
+        $this->load->view('template/v_sidebar');
         $this->load->view('user/profil',$data);
+        $this->load->view('template/v_footer');
         }
       }
 
@@ -81,7 +94,10 @@ class User_controller extends CI_Controller{
         $this->load->model('User_model');
         $data['judul'] = 'Delete Record Menggunakan Codeigniter';
         $data['daftar_user'] = $this->User_model->get_user_all();
+        $this->load->view('template/v_header');
+        $this->load->view('template/v_sidebar');
         $this->load->view('admin/daftar_user', $data);
+        $this->load->view('template/v_footer');
     }
 
     function delete_user($id)
@@ -97,7 +113,10 @@ class User_controller extends CI_Controller{
       $data['judul'] = 'Menampilkan Data dari Database Menggunakan Codeigniter';
       $data['daftar_user'] = $this->User_model->get_user_all();
       if($this->session->userdata('level') == 2 ){
+        $this->load->view('template/v_header');
+        $this->load->view('template/v_sidebar');
         $this->load->view('user/editprofil',$data);
+        $this->load->view('template/v_footer');
         }
       }
 
@@ -126,8 +145,94 @@ class User_controller extends CI_Controller{
           redirect('User_controller');
       }
 
-    function timeline()
+    function thread($id_thread='')
     {
-      $this->load->view('timeline/Dashboard');
+      $id_thread=$this->uri->segment(3);
+      if(!isset($id_thread)){
+        $id_thread=1;
+      }
+      else {
+        $id_thread=$id_thread;
+      }
+      $this->load->model('User_model');
+      $data['id_thread']=$id_thread;
+      $data['thread']=$this->User_model->thread();
+      $data['id_thread']=$id_thread;
+      $data['forumDisplayFill']=$this->User_model->getForumFill($id_thread);
+
+      $this->load->view('template/v_header');
+      $this->load->view('template/v_sidebar');
+      $this->load->view('timeline/Dashboard',$data);
+      $this->load->view('template/v_footer');
+    }
+
+    function tambahtimeline($id_thread='')
+    {
+
+      $data['id']=$id_thread;
+      $data['thread']=$this->User_model->thread();
+      $info=$this->User_model->getProp($id_thread);
+      if(!empty($info->namaforum)){
+        $data['namaforum']=$info->namaforum; }
+      $this->load->view('template/v_header');
+      $this->load->view('template/v_sidebar');
+      $this->load->view('timeline/addpost',$data);
+      $this->load->view('template/v_footer');
+    }
+
+    function detailthread($id_timeline='')
+    {
+      $id_thread=$this->uri->segment(3);
+      $data['id_thread']=$id_thread;
+      $id_timeline=$this->uri->segment(4);
+      $data['id_timeline']=$id_timeline;
+      $data['forumDisplayFill']=$this->User_model->getDetailForum($id_timeline);
+      $data['forumDisplayFillComment']=$this->User_model->getFcontentComment($id_timeline);
+      $data['thread']=$this->User_model->thread();
+      $this->load->view('template/v_header');
+      $this->load->view('template/v_sidebar');
+      $this->load->view('timeline/detail',$data);
+      $this->load->view('template/v_footer');
+    }
+
+    function simpantimeline()
+    {
+      $this->load->model('User_model');
+      $id_thread=$this->input->post('id_thread');
+      $judul=$this->input->post('judul');
+      $isi=$this->input->post('isi');
+		  $type=$this->input->post('type');
+		  $matkul=$this->input->post('matkul');
+		  $datementor=$this->input->post('datementor');
+		  $deadline=$this->input->post('deadline');
+		  $feemin=$this->input->post('feemin');
+		  $feemax=$this->input->post('feemax');
+
+      $this->User_model->saveThread();
+      $data['notifikasi'] = 'Data berhasil disimpan';
+      $data['judul']='Insert Timeline Berhasil';
+      $this->load->view('notifikasi', $data);
+      //redirect('User_controller/tampiltimeline');
+    }
+
+    function saveComment(){
+      $this->load->model('User_model');
+      $id_timeline=$this->input->post('id_timeline');
+      $isi=$this->input->post('isi');
+      if($isi==''){
+        $data['flashdata']="ISI KOMENTAR TIDAK BOLEH KOSONG";
+        $data['id_timeline']=$id_timeline;
+        $data['thread']=$this->forummodel->thread();
+        $info=$this->User_model->getProp($id);
+        $data['judul']=$info->judul;
+        $data['id_thread']=$info->id_thread;
+        $this->load->view('template/v_header');
+        $this->load->view('template/v_sidebar');
+        $this->load->view('addkomen',$data);
+        $this->load->view('template/v_footer');
+      } else {
+        $this->load->model('User_model');
+        $this->User_model->saveComment();
+      }
     }
   }
