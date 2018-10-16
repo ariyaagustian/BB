@@ -83,7 +83,8 @@ class User_model extends CI_Model{
         'datementor'=>$datementor,
         'deadline'=>$deadline,
         'feemin'=>$feemin,
-        'feemax'=>$feemax
+        'feemax'=>$feemax,
+        'tanggal'=>date("Y-m-d")
         );
         $this->db->trans_start();
         $this->db->insert('timeline',$data);
@@ -132,33 +133,17 @@ class User_model extends CI_Model{
 	      return $query->row();
       }
 
-      function saveComment(){
-      		$id_timeline=$this->input->post('id_timeline');
+      function saveComment($id_timeline=''){
       		$isi=$this->input->post('isi');
       		$data=array(
       		'id_timeline'=>$id_timeline,
-      		'username'=>$this->session->userdata('username'),
+      		'id'=>$this->session->userdata('id'),
       		'isi'=>$isi,
       		'tanggal'=>date("Y-m-d")
       		);
       		$this->db->trans_start();
-      		$this->db->insert('fcontent',$data);
+      		$this->db->insert('komentar',$data);
       		$this->db->trans_complete();
-      		redirect (base_url().'home/detailThread/'.$idthread);
+          redirect (base_url().'User_controller/detailthread/'.$id_timeline.'/'.$id_timeline);
         }
-
-    function getFcontentComment($id_timeline=''){
-			$query=$this->db->query("select  *,user.nama from komentar
-			left join user on user.id=komentar.id
-			where komentar.id_timeline='$id_timeline'
-			ORDER BY komentar.id_komentar ASC");
-			 if ($query->num_rows() > 0) {
-				foreach ($query->result() as $data) {
-					$mdata[]=$data;
-				}
-				return $mdata;
-			}
-	}
-
-
       }

@@ -248,7 +248,7 @@ class User_controller extends CI_Controller{
 
     } else {
     $this->load->model('User_model');
-    $this->User_model->saveComment();
+    $this->User_model->saveComment($id_thread,$id_timeline);
     }
   }
   }
