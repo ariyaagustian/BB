@@ -132,11 +132,12 @@
  									Judul : <label class="judul"><a href="<?php echo base_url() ?>User_controller\detailThread\<?php echo $data->id_timeline?>" ><?php echo $data->judul?></a></label>
  									<br>
  									<label class="user"> Oleh <?php echo $data->nama ?></label> |   <label class="tanggal">  Di Post Tanggal <?php echo $data->tanggal?> </label>  <br> <br>
- 									Type Tugas:<label><?php echo $data->type ?></label><br>
- 									Deadline Tugas:<label><?php echo $data->deadline ?></label><br>
- 									Matkul:<label><?php echo $data->matkul ?></label><br>
- 									Fee : <label>Rp. <?php echo $data->feemin ?></label> - <label>Rp. <?php echo $data->feemax ?></label><br>
- 									Deskripsi : <label><?php echo $data->isi?></label>
+                  Batas Cari Mentor : <label><?php echo $data->datementor ?></label><br>
+                  Type Tugas &emsp; &nbsp; &emsp;: <label><?php echo $data->type ?></label><br>
+ 									Deadline Tugas &emsp;: <label><?php echo $data->deadline ?></label><br>
+ 									Matkul&emsp;&emsp;&emsp;&emsp;&emsp;: <label><?php echo $data->matkul ?></label><br>
+ 									Fee &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;: <label>Rp. <?php echo $data->feemin ?></label> - <label>Rp. <?php echo $data->feemax ?></label><br>
+ 									Deskripsi &emsp; &emsp;&emsp;&ensp;: <label><?php echo $data->isi?></label>
  									</td>
  								</tr>
  								<tr>

@@ -68,10 +68,10 @@
       <div class="card-body table-responsive">
         <table class="table table-hover">
   				<tbody>
-                    <?php
-                      if(!empty($history)){
-                        foreach($history as $data){
-                          ?>
+                <?php
+                  if(!empty($history)){
+                    foreach($history as $data){
+                ?>
             <tr>
   						<td>
                 Anda Telah membuat suatu post dengan judul <?php echo $data->judul; ?> ( <?php  echo  $data->tanggal; ?> )
