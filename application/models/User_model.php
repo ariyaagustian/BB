@@ -20,8 +20,8 @@ class User_model extends CI_Model{
             'level'         => 2,
             'nama'          => $this->input->post('nama'),
             'username'      => $this->input->post('username'),
-            'password'      => md5($this->input->post('password')),
-            'nim'           =>$this->input->post('nim'),
+            'password'      => md5($this->input-> post('password')),
+            'nim'           => $this->input->post('nim'),
             'email'         => $this->input->post('email'),
             'jurusan'       => $this->input->post('jurusan'),
             'tlp'           => $this->input->post('tlp'),
@@ -52,7 +52,7 @@ class User_model extends CI_Model{
 
 //MELOAD ISI TIMELINE DI SETIAP THREAD
     function getForumFillcount($id_thread=''){
-  			$query=$this->db->query("select  * from timeline where id_thread='$id_thread'");
+  			$query=$this->db->query("SELECT * from timeline where id_thread='$id_thread'");
   			return $query->num_rows();
 	  }
 
@@ -135,6 +135,20 @@ class User_model extends CI_Model{
   	      return $query->row();
       }
 
+//MELOAD komentar
+function getFcontentComment($id_timeline=''){
+  		$query=$this->db->query("SELECT *, user.nama from komentar
+  		left join user on user.id=komentar.id
+  		where komentar.id_timeline='$id_timeline'
+  		ORDER BY komentar.id_komentar ASC");
+  			 if ($query->num_rows() > 0) {
+  				foreach ($query->result() as $data) {
+  					$mdata[]=$data;
+  				}
+  				return $mdata;
+  			}
+	}
+
 //MENYIMPAN SUATU KOMEN
       function saveComment($id_timeline=''){
       		$isi=$this->input->post('isi');
@@ -147,5 +161,12 @@ class User_model extends CI_Model{
       		$this->db->insert('komentar',$data);
       		$this->db->trans_complete();
           redirect (base_url().'User_controller/detailthread/'.$id_timeline.'/'.$id_timeline);
-        }
       }
+
+//MELOAD TABEL UNTUK History
+      function history($id='')  {
+          $query=$this->db->query("select  * from timeline where id='$id' ORDER BY timeline.id_timeline ASC");
+          return $query;
+      }
+
+}

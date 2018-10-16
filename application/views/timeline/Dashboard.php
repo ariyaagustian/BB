@@ -25,14 +25,14 @@
           <p>Profil</p>
         </a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item  active">
         <a class="nav-link" href="<?php echo base_url();?>User_controller/thread">
           <i class="material-icons">timeline</i>
           <p>Timeline</p>
         </a>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="./tables.html">
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url();?>User_controller/history">
           <i class="material-icons">content_paste</i>
           <p>History</p>
         </a>
@@ -50,9 +50,10 @@
     </ul>
   </div>
 </div>
-<div class="main-panel">
-
+<!-- AKHIR SIDEBAR -->
   <!-- awal header thread -->
+  <div class="main-panel">
+
     <br>
     <br>
     <br>
@@ -96,7 +97,7 @@
 
           </div>
   <!-- akhir header thread -->
- <div class="col-md-12">
+<div class="col-md-12">
 <br>
 	<div class="card">
     <div class="card-header card-header-tabs card-header-primary">
@@ -128,10 +129,10 @@
                         ?>
           <tr>
 						<td>
-							Judul : <a href="<?php echo base_url() ?>User_controller/detailThread/<?php echo $data->id_thread ?>/<?php echo $data->id_timeline?>" class="judul"><label><?php echo $data->judul?></label></a>
+							Judul &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;: <label class="text-primary judul"><a href="<?php echo base_url() ?>User_controller/detailthread/<?php echo $data->id_thread ?>/<?php echo $data->id_timeline?>"><?php echo $data->judul?></a></label>
 							<br>
-							Oleh &ensp;: <label class="user"><?php echo $data->nama ?></label> |   <label><?php echo $data->tanggal?> </label>  <br>
-							Batas Cari Mentor :<label class="tanggal"><?php echo $data->datementor?> </label>  <br><br>
+							Oleh &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: <label class="user"><?php echo $data->nama ?></label> |   <label><?php echo $data->tanggal?> </label>  <br>
+							Batas Cari Mentor : <label class="tanggal"><?php echo $data->datementor?> </label>  <br><br>
 						</td>
 						</tr>
 							<?php

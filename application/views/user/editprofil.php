@@ -18,7 +18,7 @@
           <p>Dashboard</p>
         </a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link" href="<?php echo base_url();?>User_controller/tampil"> <!-- blm dirubah-->
           <i class="material-icons"></i>
           <i class="material-icons">people</i>
@@ -31,8 +31,8 @@
           <p>Timeline</p>
         </a>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="./tables.html">
+      <li class="nav-item active">
+        <a class="nav-link" href="<?php echo base_url();?>User_controller/history">
           <i class="material-icons">content_paste</i>
           <p>History</p>
         </a>
@@ -51,6 +51,8 @@
   </div>
 </div>
 <div class="main-panel">
+
+<!-- AKHIR SIDEBAR -->
 
 
 <div class="content">

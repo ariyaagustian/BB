@@ -245,9 +245,18 @@ class User_controller extends CI_Controller{
             }
     }
 
+    function history(){
+            $id = $this->session->userdata('id');
+            $data['counthistory'] = $this->User_model->history($id)->num_rows();
+            $data['history'] = $this->User_model->history($id)->result();
+            $this->load->view('template/v_header');
+            $this->load->view('user/history',$data);
+            $this->load->view('template/v_footer');
+    }
+
     //FUNTION LOGOUT USER
-        function logout(){
-                $this->session->sess_destroy();
-                redirect('User_controller');
-          }
+    function logout(){
+            $this->session->sess_destroy();
+            redirect('User_controller');
+    }
 }

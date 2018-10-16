@@ -25,14 +25,14 @@
           <p>Profil</p>
         </a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item  active">
         <a class="nav-link" href="<?php echo base_url();?>User_controller/thread">
           <i class="material-icons">timeline</i>
           <p>Timeline</p>
         </a>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="./tables.html">
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url();?>User_controller/history">
           <i class="material-icons">content_paste</i>
           <p>History</p>
         </a>
@@ -50,6 +50,7 @@
     </ul>
   </div>
 </div>
+<!-- AKHIR SIDEBAR -->
 <div class="main-panel">
   <!-- awal header thread -->
     <br>
