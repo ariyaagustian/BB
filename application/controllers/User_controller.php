@@ -215,24 +215,36 @@ class User_controller extends CI_Controller{
       //redirect('User_controller/tampiltimeline');
     }
 
-    function saveComment(){
-      $this->load->model('User_model');
-      $id_timeline=$this->input->post('id_timeline');
-      $isi=$this->input->post('isi');
-      if($isi==''){
-        $data['flashdata']="ISI KOMENTAR TIDAK BOLEH KOSONG";
-        $data['id_timeline']=$id_timeline;
-        $data['thread']=$this->forummodel->thread();
-        $info=$this->User_model->getProp($id);
-        $data['judul']=$info->judul;
-        $data['id_thread']=$info->id_thread;
-        $this->load->view('template/v_header');
-        $this->load->view('template/v_sidebar');
-        $this->load->view('addkomen',$data);
-        $this->load->view('template/v_footer');
-      } else {
-        $this->load->model('User_model');
-        $this->User_model->saveComment();
-      }
+    function reqComment($id_timeline=''){
+    $this->load->model('User_model');
+    $data['id_timeline']=$id_timeline;
+    $data['thread']=$this->User_model->thread();
+    $info=$this->User_model->getProp($id_timeline);
+    if(!empty($info->judul)){
+    $data['judul']=$info->judul; }
+    $this->load->view('template/header');
+    $this->load->view('timeline/addkomen',$data);
+    $this->load->view('template/footer');
     }
+
+    function saveComment(){
+    $this->load->model('User_model');
+    $id_timeline=$this->input->post('id_timeline');
+    $isi=$this->input->post('isi');
+    if($isi==''){
+      $data['flashdata']="ISI KOMENTAR TIDAK BOLEH KOSONG";
+      $data['id_timeline']=$id_timeline;
+      $data['thread']=$this->forummodel->thread();
+      $info=$this->User_model->getProp($id_timeline);
+      $data['judul']=$info->judul;
+      $data['id_timeline']=$info->idtimeline;
+      $this->load->view('template/header');
+      $this->load->view('timeline/addkomen',$data);
+      $this->load->view('template/footer');
+
+    } else {
+    $this->load->model('User_model');
+    $this->User_model->saveComment();
+    }
+  }
   }

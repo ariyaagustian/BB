@@ -127,7 +127,7 @@
  							foreach($forumDisplayFill as $data){ ?>
  								<tr>
  									<td colspan="3">
- 									Judul : <label class="judul"><a href="<?php echo base_url() ?>User_controller\detailThread\<?php echo $data->id?>" ><?php echo $data->judul?></a></label>
+ 									Judul : <label class="judul"><a href="<?php echo base_url() ?>User_controller\detailThread\<?php echo $data->id_timeline?>" ><?php echo $data->judul?></a></label>
  									<br>
  									<label class="user"> Oleh <?php echo $data->nama ?></label> |   <label class="tanggal">  Di Post Tanggal <?php echo $data->tanggal?> </label>  <br> <br>
  									Type Tugas:<label><?php echo $data->type ?></label><br>
@@ -140,9 +140,9 @@
  								<tr>
  									<td></td>
  									<td>
- 										<a href="<?php echo base_url(); ?>User_controller/reqComment/<?php echo $id; ?>"><button type="submit" class="btn btn-primary pull-right" onclick="demo.showNotification">Komentar</button></a>
+ 										<a href="<?php echo base_url(); ?>User_controller/reqComment/<?php echo $id_timeline; ?>"><button type="submit" class="btn btn-primary pull-right" onclick="demo.showNotification">Komentar</button></a>
  										&emsp;
- 										<a href="<?php echo base_url();?>User_controller/reqComment/<?php echo $id; ?>"><button type="submit" class="btn btn-primary btn-danger pull-right" >Saya Siap!!! &emsp; 10</button></a>
+ 										<a href="<?php echo base_url();?>User_controller/reqComment/<?php echo $id_timeline; ?>"><button type="submit" class="btn btn-primary btn-danger pull-right" >Saya Siap!!! &emsp; 10</button></a>
  									</td>
  									<tr>
  										<td></td>

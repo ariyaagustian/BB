@@ -51,7 +51,6 @@
   </div>
 </div>
 <div class="main-panel">
-
   <!-- awal header thread -->
     <br>
     <br>
@@ -97,22 +96,31 @@
           </div>
   <!-- akhir header thread -->
 
-
 <div class="col-md-8">
             <div class="card">
               <div class="card-header card-header-tabs card-header-primary">
-                <h3 class="card-title">Fakultas Teknik dan Ilmu  Komputer</h3>
+                <h3 class="card-title">
+      						<?php
+      							if(!empty($thread)){
+      								foreach($thread as $row){
+      									if($row->id_thread == $id_thread){
+      										echo $row->nama;
+      									}
+                          		}
+      											}
+      											?>
+      					</h3>
               </div>
               <div class="card-body">
 
-                <form method="POST" action="<?php echo base_url() ?>home/saveComment">
+                <form method="POST" action="<?php echo base_url() ?>User_cpontroller/saveComment">
                   <?php if(!empty($flashdata)) {echo '<div class="flashdata">'.$flashdata.'</div>';} ?>
 
-                <input type="hidden" name="idthread" id="idthread" value="<?php echo $id ?>">
+                <input type="hidden" name="id_timeline" id="id_timeline" value="<?php echo $id_timeline ?>">
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                      Judul : <label class="judul"><?php if(!empty($judul)) { echo $judul; } ?></label>
+                      Judul : <label class="judul"><?php if(!empty($judul)) {echo $judul;} ?></label>
                       </div>
                     </div>
                     <div class="col-md-12">
