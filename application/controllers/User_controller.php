@@ -215,16 +215,20 @@ class User_controller extends CI_Controller{
       //redirect('User_controller/tampiltimeline');
     }
 
-    function reqComment($id_timeline=''){
+    function reqComment($id_thread='',$id_timeline=''){
     $this->load->model('User_model');
+    $id_thread=$this->uri->segment(3);
+    $data['id_thread']=$id_thread;
+    $id_timeline=$this->uri->segment(4);
     $data['id_timeline']=$id_timeline;
     $data['thread']=$this->User_model->thread();
     $info=$this->User_model->getProp($id_timeline);
     if(!empty($info->judul)){
-    $data['judul']=$info->judul; }
-    $this->load->view('template/header');
+    $data['judul']=$info->judul;}
+
+    $this->load->view('template/v_header');
     $this->load->view('timeline/addkomen',$data);
-    $this->load->view('template/footer');
+    $this->load->view('template/v_footer');
     }
 
     function saveComment(){
@@ -238,9 +242,9 @@ class User_controller extends CI_Controller{
       $info=$this->User_model->getProp($id_timeline);
       $data['judul']=$info->judul;
       $data['id_timeline']=$info->idtimeline;
-      $this->load->view('template/header');
+      $this->load->view('template/v_header');
       $this->load->view('timeline/addkomen',$data);
-      $this->load->view('template/footer');
+      $this->load->view('template/v_footer');
 
     } else {
     $this->load->model('User_model');

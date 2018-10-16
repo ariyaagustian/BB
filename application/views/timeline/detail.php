@@ -140,7 +140,7 @@
  								<tr>
  									<td></td>
  									<td>
- 										<a href="<?php echo base_url(); ?>User_controller/reqComment/<?php echo $id_timeline; ?>"><button type="submit" class="btn btn-primary pull-right" onclick="demo.showNotification">Komentar</button></a>
+ 										<a href="<?php echo base_url(); ?>User_controller/reqComment/<?php echo $id_thread; ?>/<?php echo $id_timeline; ?>"><button type="submit" class="btn btn-primary pull-right" onclick="demo.showNotification">Komentar</button></a>
  										&emsp;
  										<a href="<?php echo base_url();?>User_controller/reqComment/<?php echo $id_timeline; ?>"><button type="submit" class="btn btn-primary btn-danger pull-right" >Saya Siap!!! &emsp; 10</button></a>
  									</td>

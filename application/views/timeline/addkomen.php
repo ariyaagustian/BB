@@ -113,7 +113,7 @@
               </div>
               <div class="card-body">
 
-                <form method="POST" action="<?php echo base_url() ?>User_cpontroller/saveComment">
+                <form method="POST" action="<?php echo base_url() ?>User_controller/saveComment/<?php echo $id_thread ?>/<?php echo $id_timeline?>">
                   <?php if(!empty($flashdata)) {echo '<div class="flashdata">'.$flashdata.'</div>';} ?>
 
                 <input type="hidden" name="id_timeline" id="id_timeline" value="<?php echo $id_timeline ?>">
