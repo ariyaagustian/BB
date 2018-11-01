@@ -1,4 +1,6 @@
+
 <!-- Awal sidebar-->
+
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="<?php echo base_url();?>assets/img/sidebar-1.jpg">
@@ -117,7 +119,7 @@
  					</h3>
  				</div>
         <div class="col-md-5">
-            <a class="btn btn-warning btn-round pull-right"  href="<?php echo base_url(); ?>User_controller/tambahtimeline?>"> Buat Thread </a>
+            <a class="btn btn-warning btn-round pull-right"  href="<?php echo base_url(); ?>User_controller/tambahtimeline/<?= $id_thread ?>"> Buat Thread </a>
         </div>
  			</div>
      </div>
@@ -145,7 +147,52 @@
  									<td>
  										<a href="<?php echo base_url(); ?>User_controller/reqComment/<?php echo $id_thread; ?>/<?php echo $id_timeline; ?>"><button type="submit" class="btn btn-primary pull-right" onclick="demo.showNotification">Komentar</button></a>
  										&emsp;
- 										<a href="<?php echo base_url();?>User_controller/reqComment/<?php echo $id_timeline; ?>"><button type="submit" class="btn btn-primary btn-danger pull-right" >Saya Siap!!! &emsp; 10</button></a>
+ 										<!-- <a href="<?php echo base_url();?>User_controller/siap/<?php echo $siap=1;?>/<?php echo $id_thread;?>/<?php echo $id_timeline;?>"> -->
+
+
+
+
+
+                    <button type="button" class="btn btn-primary btn-danger pull-right" id="check" class="btn btn-success">Saya Siap!!! &emsp; <span id="ht" >0</span></button>
+                    <input type="hidden" name="id_timeline" value="<?= $id_timeline; ?>">
+                    <input type="hidden" name="id" value="<?= $this->session->id; ?>">
+
+      </button>
+    </p>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="<?= base_url("assets/main.js") ?>" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+          counter();
+          function counter() {
+            as = get("<?= base_url("User_controller/counter") ?>");
+            $("#ht").html(as.hitung);
+          }
+          $("#check").on('click',function(event) {
+            event.preventDefault();
+            id = $("#id").val();
+            id_timeline = $("#id_timeline").val();
+            a = post("<?= base_url("User_controller/sayasiap") ?>",{id:id},{id_timeline:id_timeline});
+            if (a.status == 1) {
+              counter();
+
+            }else {
+              new PNotify({
+                  title: 'Gagal Check',
+                  text: 'tidak tercheck',
+                  type: 'error'
+              });
+            }
+          });
+        });
+    </script>
+
+
+
+                      <!-- <button type="submit" class="btn btn-primary btn-danger pull-right" id=siap onclick="demo.showNotification('top','right')">Saya Siap!!! &emsp; <?php echo $siap; ?></button></a> -->
  									</td>
  									<tr>
  										<td></td>

@@ -23,7 +23,7 @@
     <?php endif;?>
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="page-header">Daftar User</h3>
+            <h3 class="page-header">Daftar Timeline</h3>
         </div>
         <div class="col-lg-12">
             <div class="row text-center">
@@ -33,36 +33,42 @@
                   <thead>
                   <tr>
                       <th>NO</th>
-                      <th>ID</th>
-                      <th>LEVEL</th>
-                      <th>NAMA</th>
-                      <th>USERNAME</th>
-                      <th>PASSWORD</th>
-                      <th>NIM</th>
-                      <th>JURUSAN</th>
-                      <th>EMAIL</th>
-                      <th>TLP</th>
+                      <th>ID TIMELINE</th>
+                      <th>ID THREAD</th>
+                      <th>ID USER</th>
+                      <th>JUDUL</th>
+                      <th>DESKRIPSI</th>
+                      <th>TANGGAL</th>
+                      <th>TYPE</th>
+                      <th>MATAKULIAH</th>
+                      <th>TANGGAL CARI MENTOR</th>
+                      <th>TANGGAL DEADLINE TUGAS</th>
+                      <th>FEE MIN</th>
+                      <th>FEE MAX</th>
                       <th colspan="2">ACTION</th>
                   </tr>
               </thead>
               <tbody>
                       <?php
                           $no = 1;
-                          foreach($daftar_user as $user){
+                          foreach($daftar_timeline as $user){
                   ?>
                           <tr>
                       <td><?php echo $no++; ?></td>
+                      <td><?php echo $user->id_timeline; ?></td>
+                      <td><?php echo $user->id_thread; ?></td>
                       <td><?php echo $user->id; ?></td>
-                      <td><?php echo $user->level; ?></td>
-                      <td><?php echo $user->nama; ?></td>
-                      <td><?php echo $user->username; ?></td>
-                      <td><?php echo $user->password; ?></td>
-                      <td><?php echo $user->nim; ?></td>
-                      <td><?php echo $user->jurusan; ?></td>
-                      <td><?php echo $user->email; ?></td>
-                      <td><?php echo $user->tlp; ?></td>
-                      <td><?php echo '<a href="'.base_url().'user_controller/edit_user/'.$user->id.'"><i class="glyphicon glyphicon-pencil"></i></a>'?></td>
-                      <td><?php echo '<a href="'.base_url().'user_controller/delete_user/'.$user->id.'" onclick="return confirm(\'Anda yakin akan menghapus '.$user->username.'?\')"><i class="glyphicon glyphicon-trash"></i></a>'?></td>
+                      <td><?php echo $user->judul; ?></td>
+                      <td><?php echo $user->isi; ?></td>
+                      <td><?php echo $user->tanggal; ?></td>
+                      <td><?php echo $user->type; ?></td>
+                      <td><?php echo $user->matkul; ?></td>
+                      <td><?php echo $user->datementor; ?></td>
+                      <td><?php echo $user->deadline; ?></td>
+                      <td><?php echo $user->feemin; ?></td>
+                      <td><?php echo $user->feemax; ?></td>
+                      <td><?php echo '<a href="'.base_url().'User_controller/edit_timeline/'.$user->id_timeline.'"><i class="glyphicon glyphicon-pencil"></i></a>'?></td>
+                      <td><?php echo '<a href="'.base_url().'User_controller/delete_timeline/'.$user->id_timeline.'" onclick="return confirm(\'Anda yakin akan menghapus timeline  '.$user->judul.'?\')"><i class="glyphicon glyphicon-trash"></i></a>'?></td>
 
                   </tr>
                      <?php } ?>

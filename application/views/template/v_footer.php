@@ -1,19 +1,13 @@
 <footer class="footer">
   <div class="container-fluid">
     <nav class="float-left">
-      <ul>
-        <li>
-          <a href="https://creative-tim.com/presentation">
-            About Us
-          </a>
-        </li>
-      </ul>
     </nav>
     <div class="copyright float-right">
-      &copy;
+    <center>  &copy;
       <script>
         document.write(new Date().getFullYear())
-      </script>, made with <i class="material-icons">favorite</i> by
+      </script>, made with <i class="material-icons">favorite</i> by Meissa
+    </center>
     </div>
   </div>
 </footer>
@@ -41,6 +35,8 @@ md.initDashboardPageCharts();
 
 });
 </script>
+
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/pnotify.custom.min.js"></script>
 </body>
 
 </html>

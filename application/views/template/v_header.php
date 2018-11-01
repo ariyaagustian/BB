@@ -17,4 +17,14 @@
   <link href="<?php echo base_url();?>assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="<?php echo base_url();?>assets/demo/demo.css" rel="stylesheet" />
+<link href="<?php echo base_url();?>assets/css/pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
+
+  <style media="screen">
+    .modal-backdrop.in {
+      opacity: 0;
+    }
+    .modal-backdrop {
+      z-index: 0;
+    }
+  </style>
 </head>

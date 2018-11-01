@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Brainly Bussiness</title>
+    <title>Barinly Business</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -37,6 +37,7 @@
 
 <body>
     <div class="overlay"></div>
+    <img id="loading"  width="250px" src="<?=base_url()?>assets/images/loading.gif" alt="Loading...">
 
     <div id="wrapper">
 
@@ -49,8 +50,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">
-                    <div class="inline"> &nbsp;Organization Name </div>
+                <a class="navbar-brand" href="<?=base_url();?>">
+                    <div class="inline"> &nbsp;Brainly Business</div>
                 </a>
 
             </div>
@@ -71,18 +72,16 @@
                 <!-- /.dropdown -->
             </ul>
             <div class=" navbar-brand navbar-right navbar-access-level">
-                Access Level: <?=ucfirst($this->session->userdata('role'));?>
+                Access Level: <?=ucfirst($this->session->userdata('username'));?>
                 &nbsp;
             </div>
             <!-- /.navbar-top-links -->
-
-
             <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header modal-blue">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">CHANGE PASSWORD (<?=$this->session->userdata('email')?>)</h4>
+                        <h4 class="modal-title" id="myModalLabel">CHANGE PASSWORD (<?=$this->session->userdata('username')?>)</h4>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -93,27 +92,20 @@
                         </div>
                         &nbsp;
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Current Password</label> &nbsp;&nbsp;
-                                    <label class="error" id="error_currentPassword"> field is required.</label>
-                                    <input class="form-control" id="currentPassword" placeholder="Current Password" name="currentPassword" type="password" autofocus>
+                                    <label>New Username</label> &nbsp;&nbsp;
+                                    <label class="error" id="error_newPassword"> field is required.</label>
+                                    <input class="form-control" id="username" placeholder="New Username" name="username" type="text" autofocus>
                                 </div>
                             </div>
-                        </div>
+                          </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>New Password</label> &nbsp;&nbsp;
                                     <label class="error" id="error_newPassword"> field is required.</label>
-                                    <label class="error" id="error_newPassword2"> password not match</label>
-                                    <input class="form-control" id="newPassword" placeholder="New Password" name="newPassword" type="password" autofocus>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Confirm New Password</label> &nbsp;&nbsp;
-                                    <input class="form-control" id="confirmNewPassword" placeholder="Confirm New Password" name="confirmNewPassword" type="password" autofocus>
+                                    <input class="form-control" id="password" placeholder="New Password" name="password" type="password" autofocus>
                                 </div>
                             </div>
                       </div>
@@ -129,40 +121,3 @@
             <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
-
-        <!-- Awal Sidebar-->
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li>
-                        <?php echo '<p class="welcome"><b> <text style="font-size:150%;">&#9786</text> <i>Welcome </i>' . $this->session->userdata('name') . "!</b></p>"; ?>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>User_controller/dash"><i class="fa fa-home fa-fw"></i> Dashboard</a>
-                    </li>
-                    <?php if($this->session->userdata('level') == '1'): ?>
-                        <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> Administrator<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li> <a href="<?=base_url('admin/user_list')?>"> &raquo; User List</a> </li>
-                                <li> <a href="<?=base_url()?>">&raquo; Ranking List</a> </li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>
-                    <li>
-                        <a href="#"><i class="fa fa-user fa-fw"></i> Other Menu Sample<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li> <a href="#">&raquo; Timeline</a> </li>
-                            <li> <a href="#">&raquo; Komentar</a> </li>
-                            <li> <a href="#">&raquo; Thread</a> </li>
-                        </ul>
-                    </li>
-
-
-                </ul>
-            </div>
-            <!-- /.sidebar-collapse -->
-        </div>
-        <!-- /.navbar-static-side -->
-        </nav>
-        <!--Akhir Sidebar -->

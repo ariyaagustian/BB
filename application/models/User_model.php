@@ -30,9 +30,24 @@ class User_model extends CI_Model{
         return $simpan;
     }
 
-//MELOAD SEMUA DATA USER
+//ADMIN --- MELOAD SEMUA DATA USER
     function get_user_all(){
-        $query=$this->db->query("SELECT * FROM user ORDER BY id DESC");
+        $query=$this->db->order_by('id','DESC')->get('user');
+        return $query->result();
+    }
+
+    function get_timeline_all(){
+        $query=$this->db->order_by('id_timeline','DESC')->get('timeline');
+        return $query->result();
+    }
+
+    function get_thread_all(){
+        $query=$this->db->order_by('id_thread','DESC')->get('thread');
+        return $query->result();
+    }
+
+    function get_komen_all(){
+        $query=$this->db->order_by('id_komentar','DESC')->get('komentar');
         return $query->result();
     }
 
@@ -150,17 +165,18 @@ function getFcontentComment($id_timeline=''){
 	}
 
 //MENYIMPAN SUATU KOMEN
-      function saveComment($id_timeline=''){
+      function saveComment($id_thread='',$id_timeline=''){
       		$isi=$this->input->post('isi');
       		$data=array(
           		'id_timeline'=>$id_timeline,
-          		'id'=>$this->session->userdata('id'),
-          		'isi'=>$isi,
-          		'tanggal'=>date("Y-m-d")	);
+              'id_thread'  =>$id_thread,
+          		'id'         =>$this->session->userdata('id'),
+          		'isi'        =>$isi,
+          		'tanggal'    =>date("Y-m-d")	);
       		$this->db->trans_start();
       		$this->db->insert('komentar',$data);
       		$this->db->trans_complete();
-          redirect (base_url().'User_controller/detailthread/'.$id_timeline.'/'.$id_timeline);
+          redirect (base_url().'User_controller/detailthread/'.$id_thread.'/'.$id_timeline);
       }
 
 //MELOAD TABEL UNTUK History

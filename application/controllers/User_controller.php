@@ -36,10 +36,95 @@ class User_controller extends CI_Controller{
                 $this->load->view('user/Dashboard');
                 $this->load->view('template/v_footer');
             } else  {
+                $this->load->view('admin/header');
+                $this->load->view('admin/sidebar');
                 $this->load->view('admin/Dashboard');
+                $this->load->view('admin/footer');
             }
           }
     }
+// ADMIN
+  function a_dashboard()
+  {
+    $this->load->view('admin/header');
+    $this->load->view('admin/sidebar');
+    $this->load->view('admin/Dashboard');
+    $this->load->view('admin/footer');
+  }
+
+    function tampil() {
+          $this->load->model('User_model');
+          $data['daftar_user'] = $this->User_model->get_user_all();
+          if($this->session->userdata('level') == 1){
+              $this->load->view('admin/header');
+              $this->load->view('admin/sidebar');
+              $this->load->view('admin/user_list', $data);
+              $this->load->view('admin/footer');
+          }else{
+        //echo $this->session->userdata('id');
+              $this->load->view('template/v_header');
+              $this->load->view('template/v_sidebar');
+              $this->load->view('user/profil',$data);
+              $this->load->view('template/v_footer');
+          }
+    }
+
+    //HAPUS DATA BERDASAR ID
+        function delete_user($id) {
+              $this->load->model('User_model');
+              $username = $this->User_model->delete_user($id);
+              redirect('User_controller/hapus');
+        }
+
+    //EDIT BIODATA USER
+        function edit_user($id) {
+              $this->load->model('User_model');
+              $data['judul'] = 'Menampilkan Data dari Database Menggunakan Codeigniter';
+              $data['daftar_user'] = $this->User_model->get_user_all();
+              if($this->session->userdata('level') == 2 ){
+                $this->load->view('template/v_header');
+                $this->load->view('template/v_sidebar');
+                $this->load->view('user/editprofil',$data);
+                $this->load->view('template/v_footer');
+                }
+        }
+
+    function tampil_timeline()
+    {
+      $this->load->model('User_model');
+      $data['daftar_timeline'] = $this->User_model->get_timeline_all();
+      if($this->session->userdata('level') == 1){
+          $this->load->view('admin/header');
+          $this->load->view('admin/sidebar');
+          $this->load->view('admin/timeline_list', $data);
+          $this->load->view('admin/footer');
+    }
+  }
+
+  function tampil_thread()
+  {
+    $this->load->model('User_model');
+    $data['daftar_thread'] = $this->User_model->get_thread_all();
+    if($this->session->userdata('level') == 1){
+        $this->load->view('admin/header');
+        $this->load->view('admin/sidebar');
+        $this->load->view('admin/thread_list', $data);
+        $this->load->view('admin/footer');
+  }
+}
+
+function tampil_komen()
+{
+  $this->load->model('User_model');
+  $data['daftar_komen'] = $this->User_model->get_komen_all();
+  if($this->session->userdata('level') == 1){
+      $this->load->view('admin/header');
+      $this->load->view('admin/sidebar');
+      $this->load->view('admin/komen_list', $data);
+      $this->load->view('admin/footer');
+}
+}
+// AKHIR ADMIN
 
 //DASHBOARD PERTAMA KALI
     function dash(){
@@ -70,23 +155,7 @@ class User_controller extends CI_Controller{
     }
 
 //MENAMPILKAN DATA UNTUK ADMIN
-    function tampil() {
-          $this->load->model('User_model');
-          $data['judul'] = 'Menampilkan Data dari Database Menggunakan Codeigniter';
-          $data['daftar_user'] = $this->User_model->get_user_all();
-          if($this->session->userdata('level') == 1){
-              $this->load->view('template/v_header');
-              $this->load->view('template/v_sidebar');
-              $this->load->view('admin/user_list', $data);
-              $this->load->view('template/v_footer');
-          }else{
-        //echo $this->session->userdata('id');
-              $this->load->view('template/v_header');
-              $this->load->view('template/v_sidebar');
-              $this->load->view('user/profil',$data);
-              $this->load->view('template/v_footer');
-          }
-    }
+
 
 //HAPUS DATA UNTUK ADMIN
     function hapus(){
@@ -99,25 +168,7 @@ class User_controller extends CI_Controller{
           $this->load->view('template/v_footer');
     }
 
-//HAPUS DATA BERDASAR ID
-    function delete_user($id) {
-          $this->load->model('User_model');
-          $username = $this->User_model->delete_user($id);
-          redirect('User_controller/hapus');
-    }
 
-//EDIT BIODATA USER
-    function edit_user() {
-          $this->load->model('User_model');
-          $data['judul'] = 'Menampilkan Data dari Database Menggunakan Codeigniter';
-          $data['daftar_user'] = $this->User_model->get_user_all();
-          if($this->session->userdata('level') == 2 ){
-            $this->load->view('template/v_header');
-            $this->load->view('template/v_sidebar');
-            $this->load->view('user/editprofil',$data);
-            $this->load->view('template/v_footer');
-            }
-    }
 
 //MENYIMPAN EDITAN FORM BIODATA USER
     function simpan_edit_user($id) {
@@ -160,15 +211,22 @@ class User_controller extends CI_Controller{
 
 //MENAMBAH POST/TIMELINE BARU
     function tambahtimeline($id_thread=''){
-            $data['id']=$id_thread;
-            $data['thread']=$this->User_model->thread();
-            $info=$this->User_model->getProp($id_thread);
-            if(!empty($info->namaforum)){
-                $data['namaforum']=$info->namaforum; }
-                $this->load->view('template/v_header');
-                $this->load->view('template/v_sidebar');
-                $this->load->view('timeline/addpost',$data);
-                $this->load->view('template/v_footer');
+            // $data['id']=$id_thread;
+            // $data['thread']=$this->User_model->thread();
+            // $info=$this->User_model->getProp($id_thread);
+            // if(!empty($info->namaforum)){
+            //     $data['namaforum']=$info->namaforum;
+            // }
+            $a = $this->db->get_where("thread",["id_thread"=>$id_thread]);
+            if ($a->num_rows() > 0) {
+              $data = ["nama_thread"=>$a->row()->nama,"id"=>$id_thread];
+              $this->load->view('template/v_header');
+              $this->load->view('template/v_sidebar');
+              $this->load->view('timeline/addpost',$data);
+              $this->load->view('template/v_footer');
+            }else {
+              redirect(base_url("user_controller/detailthread"));
+            }
     }
 
     //MENYIMPAN TIMELINE BARU
@@ -192,7 +250,7 @@ class User_controller extends CI_Controller{
         }
 
 //MELOAD DETAIL SUATU POST
-    function detailthread($id_timeline='')  {
+function detailthread($id_timeline='')  {
             $id_thread=$this->uri->segment(3);
             $data['id_thread']=$id_thread;
             $id_timeline=$this->uri->segment(4);
@@ -210,9 +268,9 @@ class User_controller extends CI_Controller{
     function reqComment($id_thread='',$id_timeline=''){
             $this->load->model('User_model');
             $id_thread=$this->uri->segment(3);
-            $data['id_thread']=$id_thread;
+              $data['id_thread']=$id_thread;
             $id_timeline=$this->uri->segment(4);
-            $data['id_timeline']=$id_timeline;
+              $data['id_timeline']=$id_timeline;
             $data['thread']=$this->User_model->thread();
             $info=$this->User_model->getProp($id_timeline);
             if(!empty($info->judul)){
@@ -226,7 +284,10 @@ class User_controller extends CI_Controller{
 //MENYIMPAN KOMEN DI SUATU POST
     function saveComment(){
             $this->load->model('User_model');
-            $id_timeline=$this->input->post('id_timeline');
+            $id_thread=$this->uri->segment(3);
+              $data['id_thread']=$id_thread;
+            $id_timeline=$this->uri->segment(4);
+              $data['id_timeline']=$id_timeline;
             $isi=$this->input->post('isi');
             if($isi==''){
                   $data['flashdata']="ISI KOMENTAR TIDAK BOLEH KOSONG";
@@ -242,7 +303,14 @@ class User_controller extends CI_Controller{
             } else {
                   $this->load->model('User_model');
                   $this->User_model->saveComment($id_thread,$id_timeline);
+                  // redirect('User_controller/detailthread/'.$id_thread.'/'.$id_timeline);
             }
+    }
+
+//BUTTON SIAP SEBAGAI Mentor
+    function siap($siap='')  {
+            $siap=$this->uri->segment(3);
+              $data['siap']=$siap;
     }
 
     function history(){
@@ -259,4 +327,21 @@ class User_controller extends CI_Controller{
             $this->session->sess_destroy();
             redirect('User_controller');
     }
+
+
+    function counter() {
+    		$a = $this->db->get("detail_timeline");
+    		header('Content-Type: application/json');
+    		echo json_encode(["hitung"=>$a->num_rows()]);
+	}
+	  function sayasiap() {
+    		$dpost = $this->input->post(null,true,true);
+    		$ins = $this->db->insert("detail_timeline",$dpost);
+    		header('Content-Type: application/json');
+    		if ($ins) {
+    			echo json_encode(["status"=>1]);
+    		}else {
+    			echo json_encode(["status"=>0]);
+		}
+	}
 }

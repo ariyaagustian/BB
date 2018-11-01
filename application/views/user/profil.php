@@ -1,3 +1,4 @@
+
 <!-- Awal sidebar-->
 <body class="">
   <div class="wrapper ">
@@ -154,15 +155,12 @@
                   <center><img src="<?php echo base_url()?>gambar/<?php echo $id ?>.jpg" height="180px" weight="300px"><center>
                  <br>
                  <center><button type="submit" class="btn btn-primary pull-center">Ganti Foto Profil</button></center>
-                 </form>
             </div>
-                </div>
-              </div>
-            </div>
+          </form>
 
-          </div>
-        </div>
-      </div>
-    </div>
+
+
+
+
     <?php  } }
     $this->load->view('template/v_footer');?>

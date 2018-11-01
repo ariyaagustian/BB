@@ -1,211 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Brainly Bussiness</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="<?=base_url()?>assets/css/metisMenu.min.css" rel="stylesheet">
-
-    <!-- DataTables CSS -->
-    <link href="<?=base_url()?>assets/css/dataTables.bootstrap.css" rel="stylesheet">
-
-    <link href="<?=base_url()?>assets/css/bootstrap-editable.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="<?=base_url()?>assets/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="<?=base_url()?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Custom tab icons -->
-    <link rel="shortcut icon" href="<?=base_url()?>assets/images/codeigniter_logo.png" type="image/x-icon">
-    <link href="<?=base_url()?>assets/js/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <link href="<?=base_url()?>assets/js/jquery-ui-1.11.4.custom/jquery-ui-custom-datepicker.css" rel="stylesheet" type="text/css" />
-
-    <input type="hidden"  id="base-url" value="<?=base_url()?>"/>
-</head>
-
-<body>
-    <div class="overlay"></div>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">#</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="">
-                    <div class="inline"> &nbsp;Organization Name </div>
-                </a>
-
-            </div>
-            <!-- /.navbar-header -->
-
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a  id="header-dropdown" class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i id="header-icon" class="fa fa-user fa-fw"></i>  <i id="header-icon" class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#" data-toggle="modal" data-target="#changePasswordModal"><i class="fa fa-refresh fa-fw"></i> Change Password</a></li>
-                        <li class="divider"></li>
-                        <li><a href="<?=base_url();?>authentication/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <div class=" navbar-brand navbar-right navbar-access-level">
-                Access Level: <?=ucfirst($this->session->userdata('role'));?>
-                &nbsp;
-            </div>
-            <!-- /.navbar-top-links -->
-
-
-            <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header modal-blue">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">CHANGE PASSWORD (<?=$this->session->userdata('email')?>)</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label class="error" id="error_changePassword">invalid current password</label>
-                                <label class="error" id="error_changePassword2">password must be at least 8 characters (alphanumeric or special characters)</label>
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>Current Password</label> &nbsp;&nbsp;
-                                    <label class="error" id="error_currentPassword"> field is required.</label>
-                                    <input class="form-control" id="currentPassword" placeholder="Current Password" name="currentPassword" type="password" autofocus>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>New Password</label> &nbsp;&nbsp;
-                                    <label class="error" id="error_newPassword"> field is required.</label>
-                                    <label class="error" id="error_newPassword2"> password not match</label>
-                                    <input class="form-control" id="newPassword" placeholder="New Password" name="newPassword" type="password" autofocus>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Confirm New Password</label> &nbsp;&nbsp;
-                                    <input class="form-control" id="confirmNewPassword" placeholder="Confirm New Password" name="confirmNewPassword" type="password" autofocus>
-                                </div>
-                            </div>
-                      </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
-                        <button id="changePasswordSubmit" type="button" class="btn btn-primary">UPDATE</button>
+        <div id="page-wrapper">
+            <?php if($this->session->flashdata('success')):?>
+                &nbsp;<div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong><?php echo $this->session->flashdata('success'); ?></strong>
+                </div>
+            <?php elseif($this->session->flashdata('error')):?>
+                &nbsp;<div class="alert alert-warning">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong><?php echo $this->session->flashdata('error'); ?></strong>
+                </div>
+            <?php endif;?>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header">Dashboard</h3>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row text-center">
+                        ini admin
                     </div>
                 </div>
-                <!-- /.modal-content -->
+                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.modal-dialog -->
+            <!-- /.row -->
+
         </div>
-        <!-- /.modal -->
+        <!-- /#page-wrapper -->
 
-        <!-- Awal Sidebar-->
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li>
-                        <?php echo '<p class="welcome"><b> <text style="font-size:150%;">&#9786</text> <i>Welcome </i>' . $this->session->userdata('name') . "!</b></p>"; ?>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>User_controller/dash"><i class="fa fa-home fa-fw"></i> Dashboard</a>
-                    </li>
-                    <?php if($this->session->userdata('level') == '1'): ?>
-                        <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> Administrator<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li> <a href="<?=base_url()?>Admin/user_list"> &raquo; User List</a> </li>
-                                <li> <a href="<?=base_url()?>">&raquo; Ranking List</a> </li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>
-                    <li>
-                        <a href="#"><i class="fa fa-user fa-fw"></i> Other Menu Sample<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li> <a href="#">&raquo; Timeline</a> </li>
-                            <li> <a href="#">&raquo; Komentar</a> </li>
-                            <li> <a href="#">&raquo; Thread</a> </li>
-                        </ul>
-                    </li>
-
-
-                </ul>
-            </div>
-            <!-- /.sidebar-collapse -->
-        </div>
-        <!-- /.navbar-static-side -->
-        </nav>
-        <!--Akhir Sidebar -->
-<tbody>
-  <p>ini dashboard admin</p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><ol class="breadcrumb" style="margin-bottom: 5px;">
-    <li><a href="#">rubyrb</a></li>
-    <li><a href="#">Library</a></li>
-    <li class="active">Data</li>
-  </ol>
-</tbody>
-
-<tfoot>
-
-
-<!--  awal footer-->
-<div class="col-lg-12 text-center" style="padding:5px;"><small>&copy; 2017 by <a target="_blank" href="http://rudiliu.com">Rudi Liu</a></small></div>
-</div>
-<!-- /#wrapper -->
-
-<!-- jQuery -->
-
-<script src="<?=base_url()?>assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="<?=base_url()?>assets/js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="<?=base_url()?>assets/js/metisMenu.min.js"></script>
-
-<!-- DataTables JavaScript -->
-<script src="<?=base_url()?>assets/js/jquery.dataTables.min.js"></script>
-<script src="<?=base_url()?>assets/js/dataTables.bootstrap.min.js"></script>
-<script src="<?=base_url()?>assets/js/bootstrap-editable.min.js"></script>
-<script src="<?=base_url()?>assets/js/bootstrap-editable.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="<?=base_url()?>assets/js/sb-admin-2.js"></script>
-
-
-
-
-</tfoot>
-</body>
-
-</html>
+    </div>
+    <!-- wrapper -->
