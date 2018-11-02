@@ -36,30 +36,30 @@ class User_controller extends CI_Controller{
                 $this->load->view('user/Dashboard');
                 $this->load->view('template/v_footer');
             } else  {
-                $this->load->view('admin/header');
-                $this->load->view('admin/sidebar');
+                $this->load->view('template/v_header');
+                $this->load->view('template/v_sidebar');
                 $this->load->view('admin/Dashboard');
-                $this->load->view('admin/footer');
+                $this->load->view('template/v_footer');
             }
           }
     }
 // ADMIN
   function a_dashboard()
   {
-    $this->load->view('admin/header');
-    $this->load->view('admin/sidebar');
+    $this->load->view('template/v_header');
+    $this->load->view('template/v_sidebar');
     $this->load->view('admin/Dashboard');
-    $this->load->view('admin/footer');
+    $this->load->view('template/v_footer');
   }
 
     function tampil() {
           $this->load->model('User_model');
           $data['daftar_user'] = $this->User_model->get_user_all();
           if($this->session->userdata('level') == 1){
-              $this->load->view('admin/header');
-              $this->load->view('admin/sidebar');
+            $this->load->view('template/v_header');
+            $this->load->view('template/v_sidebar');
               $this->load->view('admin/user_list', $data);
-              $this->load->view('admin/footer');
+              $this->load->view('template/v_footer');
           }else{
         //echo $this->session->userdata('id');
               $this->load->view('template/v_header');
@@ -94,10 +94,10 @@ class User_controller extends CI_Controller{
       $this->load->model('User_model');
       $data['daftar_timeline'] = $this->User_model->get_timeline_all();
       if($this->session->userdata('level') == 1){
-          $this->load->view('admin/header');
-          $this->load->view('admin/sidebar');
+        $this->load->view('template/v_header');
+        $this->load->view('template/v_sidebar');
           $this->load->view('admin/timeline_list', $data);
-          $this->load->view('admin/footer');
+          $this->load->view('template/v_footer');
     }
   }
 
@@ -106,10 +106,10 @@ class User_controller extends CI_Controller{
     $this->load->model('User_model');
     $data['daftar_thread'] = $this->User_model->get_thread_all();
     if($this->session->userdata('level') == 1){
-        $this->load->view('admin/header');
-        $this->load->view('admin/sidebar');
+      $this->load->view('template/v_header');
+      $this->load->view('template/v_sidebar');
         $this->load->view('admin/thread_list', $data);
-        $this->load->view('admin/footer');
+                  $this->load->view('template/v_footer');
   }
 }
 
@@ -118,10 +118,10 @@ function tampil_komen()
   $this->load->model('User_model');
   $data['daftar_komen'] = $this->User_model->get_komen_all();
   if($this->session->userdata('level') == 1){
-      $this->load->view('admin/header');
-      $this->load->view('admin/sidebar');
-      $this->load->view('admin/komen_list', $data);
-      $this->load->view('admin/footer');
+    $this->load->view('template/v_header');
+    $this->load->view('template/v_sidebar');
+    $this->load->view('admin/komen_list', $data);
+    $this->load->view('template/v_footer');
 }
 }
 // AKHIR ADMIN

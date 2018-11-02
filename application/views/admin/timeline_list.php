@@ -1,59 +1,127 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Daftar User</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
-  </head>
-  <body>
+<!-- Awal sidebar-->
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="<?php echo base_url();?>assets/img/sidebar-1.jpg">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
-<div id="page-wrapper">
+        Tip 2: you can also add an image using data-image tag
 
-    <?php if($this->session->flashdata('success')):?>
-        &nbsp;<div class="alert alert-success">
-        <a href="#" class="close" data-dismiss="alert">&times;</a>
-        <strong><?php echo $this->session->flashdata('success'); ?></strong>
-        </div>
-    <?php elseif($this->session->flashdata('error')):?>
-        &nbsp;<div class="alert alert-warning">
-        <a href="#" class="close" data-dismiss="alert">&times;</a>
-        <strong><?php echo $this->session->flashdata('error'); ?></strong>
-        </div>
-    <?php endif;?>
-    <div class="row">
-        <div class="col-lg-12">
-            <h3 class="page-header">Daftar Timeline</h3>
-        </div>
-        <div class="col-lg-12">
-            <div class="row text-center">
-              <!-- awal isi -->
-              <thead>
-            <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                  <thead>
-                  <tr>
-                      <th>NO</th>
-                      <th>ID TIMELINE</th>
-                      <th>ID THREAD</th>
-                      <th>ID USER</th>
-                      <th>JUDUL</th>
-                      <th>DESKRIPSI</th>
-                      <th>TANGGAL</th>
-                      <th>TYPE</th>
-                      <th>MATAKULIAH</th>
-                      <th>TANGGAL CARI MENTOR</th>
-                      <th>TANGGAL DEADLINE TUGAS</th>
-                      <th>FEE MIN</th>
-                      <th>FEE MAX</th>
-                      <th colspan="2">ACTION</th>
-                  </tr>
-              </thead>
-              <tbody>
-                      <?php
-                          $no = 1;
-                          foreach($daftar_timeline as $user){
-                  ?>
-                          <tr>
+    SIDEBAR-->
+    <br>
+    <br>
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <li class="nav-item  ">
+          <a class="nav-link" href="<?php echo base_url();?>User_controller/dash"> <!-- blm dirubah-->
+            <i class="material-icons">dashboard</i>
+            <p>Dashboard Admin</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="<?php echo base_url();?>User_controller/tampil"> <!-- blm dirubah-->
+            <i class="material-icons"></i>
+            <i class="material-icons">people</i>
+            <p>Pengguna</p>
+          </a>
+        </li>
+        <li class="nav-item active ">
+          <a class="nav-link" href="<?php echo base_url();?>User_controller/tampil_timeline">
+            <i class="material-icons">timeline</i>
+            <p>Timeline</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url();?>User_controller/tampil_thread">
+            <i class="material-icons">content_paste</i>
+            <p>Thread</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="<?php echo base_url();?>User_controller/tampil_komen">
+            <i class="material-icons">record_voice_over</i>
+            <p>Komentar</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="logout">
+            <i class="material-icons">logout</i>
+            <p>Logout</p>
+          </a>
+        </li>
+        <!-- <li class="nav-item "><a  class="nav-link" href="../home/user_login">
+          <i class="material-icons">login</i>
+          <p>Login</p>
+        </a></li> -->
+      </ul>
+    </div>
+  </div>
+  <!-- AKHIR SIDEBAR -->
+<div class="main-panel">
+<div class="content">
+  <p>Daftar Timeline</p>
+        <div class="container-fluid">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <center><h4 class="card-title ">Daftar Timeline</a></h4></center>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table" >
+                      <thead class=" text-primary" align="center">
+                        <th  align="center">
+                          NO
+                        </th>
+                        <th align="center">
+                          ID TIMELINE
+                        </th>
+                        <th align="center">
+                          ID THREAD
+                        </th>
+                        <th align="center">
+                          ID USER
+                        </th>
+                        <th align="center">
+                          JUDUL
+                        </th>
+                        <th align="center">
+                          DESKRIPSI
+                        </th>
+                        <th align="center">
+                          TANGGAL
+                        </th>
+                        <th align="center">
+                          TYPE
+                        </th>
+                        <th align="center">
+                          MATA KULIAH
+                        </th>
+                        <th align="center">
+                          TANGGAL CARI MENTOR
+                        </th>
+                        <th align="center">
+                          TANGGAL DEADLINE TUGAS
+                        </th>
+                        <th align="center">
+                          FEE MIN
+                        </th>
+                        <th align="center">
+                          FEE MAX
+                        </th>
+                        <th colspan="2" align="center">ACTION</th>
+                      </thead>
+                      <tbody align="center">
+
+                        <?php
+                            $no = 1;
+                            foreach($daftar_timeline as $user){
+                    ?>
+
+                        <tr align="center">
+
                       <td><?php echo $no++; ?></td>
                       <td><?php echo $user->id_timeline; ?></td>
                       <td><?php echo $user->id_thread; ?></td>
@@ -67,34 +135,17 @@
                       <td><?php echo $user->deadline; ?></td>
                       <td><?php echo $user->feemin; ?></td>
                       <td><?php echo $user->feemax; ?></td>
-                      <td><?php echo '<a href="'.base_url().'User_controller/edit_timeline/'.$user->id_timeline.'"><i class="glyphicon glyphicon-pencil"></i></a>'?></td>
-                      <td><?php echo '<a href="'.base_url().'User_controller/delete_timeline/'.$user->id_timeline.'" onclick="return confirm(\'Anda yakin akan menghapus timeline  '.$user->judul.'?\')"><i class="glyphicon glyphicon-trash"></i></a>'?></td>
-
-                  </tr>
-                     <?php } ?>
-              </tbody>
-
-              </table>
-              <!-- akhir isi -->
+                      <td><?php echo '<a href="'.base_url().'User_controller/edit_timeline/'.$user->id_timeline.'"><i class="material-icons">border_color</i></a>'?></td>
+                      <td><?php echo '<a href="'.base_url().'User_controller/delete_timeline/'.$user->id_timeline.'" onclick="return confirm(\'Anda yakin akan menghapus komentar '.$user->isi.'?\')"><i class="material-icons">restore_from_trash</i></a>'?></td>
+                        </tr>
+                      <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-        <!-- /.col-lg-12 -->
+
+
     </div>
-    <!-- /.row -->
-
-</div>
-<!-- /#page-wrapper -->
-
-</div>
-<!-- wrapper -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript">
-  $(document).ready( function () {
-      $('#table_id').DataTable();
-  } );
-</script>
-</body>
-</html>
+  </div>

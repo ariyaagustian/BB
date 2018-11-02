@@ -20,6 +20,10 @@
 <script src="<?php echo base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js
+"></script>
+
 <!-- Chartist JS -->
 <script src="<?php echo base_url();?>assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->

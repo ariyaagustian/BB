@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Barinly Business</title>
+    <title>Organization Name</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="<?=base_url();?>">
-                    <div class="inline"> &nbsp;Brainly Business</div>
+                    <div class="inline"> &nbsp;Organization Name </div>
                 </a>
 
             </div>
@@ -72,16 +72,18 @@
                 <!-- /.dropdown -->
             </ul>
             <div class=" navbar-brand navbar-right navbar-access-level">
-                Access Level: <?=ucfirst($this->session->userdata('username'));?>
+                Access Level: <?=ucfirst($this->session->userdata('role'));?>
                 &nbsp;
             </div>
             <!-- /.navbar-top-links -->
+
+
             <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header modal-blue">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">CHANGE PASSWORD (<?=$this->session->userdata('username')?>)</h4>
+                        <h4 class="modal-title" id="myModalLabel">CHANGE PASSWORD (<?=$this->session->userdata('email')?>)</h4>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -92,20 +94,27 @@
                         </div>
                         &nbsp;
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>New Username</label> &nbsp;&nbsp;
-                                    <label class="error" id="error_newPassword"> field is required.</label>
-                                    <input class="form-control" id="username" placeholder="New Username" name="username" type="text" autofocus>
+                                    <label>Current Password</label> &nbsp;&nbsp;
+                                    <label class="error" id="error_currentPassword"> field is required.</label>
+                                    <input class="form-control" id="currentPassword" placeholder="Current Password" name="currentPassword" type="password" autofocus>
                                 </div>
                             </div>
-                          </div>
+                        </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>New Password</label> &nbsp;&nbsp;
                                     <label class="error" id="error_newPassword"> field is required.</label>
-                                    <input class="form-control" id="password" placeholder="New Password" name="password" type="password" autofocus>
+                                    <label class="error" id="error_newPassword2"> password not match</label>
+                                    <input class="form-control" id="newPassword" placeholder="New Password" name="newPassword" type="password" autofocus>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Confirm New Password</label> &nbsp;&nbsp;
+                                    <input class="form-control" id="confirmNewPassword" placeholder="Confirm New Password" name="confirmNewPassword" type="password" autofocus>
                                 </div>
                             </div>
                       </div>

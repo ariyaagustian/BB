@@ -1,57 +1,118 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Daftar User</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
-  </head>
-  <body>
+<!-- Awal sidebar-->
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="<?php echo base_url();?>assets/img/sidebar-1.jpg">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
-<div id="page-wrapper">
+        Tip 2: you can also add an image using data-image tag
 
-    <?php if($this->session->flashdata('success')):?>
-        &nbsp;<div class="alert alert-success">
-        <a href="#" class="close" data-dismiss="alert">&times;</a>
-        <strong><?php echo $this->session->flashdata('success'); ?></strong>
-        </div>
-    <?php elseif($this->session->flashdata('error')):?>
-        &nbsp;<div class="alert alert-warning">
-        <a href="#" class="close" data-dismiss="alert">&times;</a>
-        <strong><?php echo $this->session->flashdata('error'); ?></strong>
-        </div>
-    <?php endif;?>
-    <div class="row">
-        <div class="col-lg-12">
-            <h3 class="page-header">Daftar User</h3>
-        </div>
-        <div class="col-lg-12">
-            <div class="row text-center">
-              <!-- awal isi -->
-              <thead>
-            <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                  <thead>
-                  <tr>
-                      <th>NO</th>
-                      <th>ID</th>
-                      <th>LEVEL</th>
-                      <th>NAMA</th>
-                      <th>USERNAME</th>
-                      <th>PASSWORD</th>
-                      <th>NIM</th>
-                      <th>JURUSAN</th>
-                      <th>EMAIL</th>
-                      <th>TLP</th>
-                      <th colspan="2">ACTION</th>
-                  </tr>
-              </thead>
-              <tbody>
+    SIDEBAR-->
+    <br>
+    <br>
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <li class="nav-item  ">
+          <a class="nav-link" href="<?php echo base_url();?>User_controller/dash"> <!-- blm dirubah-->
+            <i class="material-icons">dashboard</i>
+            <p>Dashboard Admin</p>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="<?php echo base_url();?>User_controller/tampil"> <!-- blm dirubah-->
+            <i class="material-icons"></i>
+            <i class="material-icons">people</i>
+            <p>Pengguna</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="<?php echo base_url();?>User_controller/tampil_timeline">
+            <i class="material-icons">timeline</i>
+            <p>Timeline</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url();?>User_controller/tampil_thread">
+            <i class="material-icons">content_paste</i>
+            <p>Thread</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url();?>User_controller/tampil_komen">
+            <i class="material-icons">record_voice_over</i>
+            <p>Komentar</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="logout">
+            <i class="material-icons">logout</i>
+            <p>Logout</p>
+          </a>
+        </li>
+        <!-- <li class="nav-item "><a  class="nav-link" href="../home/user_login">
+          <i class="material-icons">login</i>
+          <p>Login</p>
+        </a></li> -->
+      </ul>
+    </div>
+  </div>
+  <!-- AKHIR SIDEBAR -->
+<div class="main-panel">
+<div class="content">
+  <p>Daftar Pengguna</p>
+        <div class="container-fluid">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <center><h4 class="card-title ">Daftar Pengguna</a></h4></center>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered " id="example" width="100%">
+                      <thead class=" text-primary" align="center">
+                        <th  align="center">
+                          NO
+                        </th>
+                        <th align="center">
+                          ID
+                        </th>
+                        <th align="center">
+                          LEVEL
+                        </th>
+                        <th align="center">
+                          NAMA
+                        </th>
+                        <th align="center">
+                          USERNAME
+                        </th>
+                        <th align="center">
+                          PASSWORD
+                        </th>
+                        <th align="center">
+                          NIM
+                        </th>
+                        <th align="center">
+                          JURUSAN
+                        </th>
+                        <th align="center">
+                          EMAIL
+                        </th>
+                        <th align="center">
+                          TELEPON
+                        </th>
+                        <th colspan="2" align="center">ACTION</th>
+                      </thead>
+                      <tbody align="center">
+
                       <?php
                           $no = 1;
                           foreach($daftar_user as $user){
-                  ?>
-                          <tr>
-                      <td><?php echo $no++; ?></td>
+                      ?>
+
+                        <tr align="center">
+                          <td><?php echo $no++; ?></td>
                       <td><?php echo $user->id; ?></td>
                       <td><?php echo $user->level; ?></td>
                       <td><?php echo $user->nama; ?></td>
@@ -61,34 +122,23 @@
                       <td><?php echo $user->jurusan; ?></td>
                       <td><?php echo $user->email; ?></td>
                       <td><?php echo $user->tlp; ?></td>
-                      <td><?php echo '<a href="'.base_url().'user_controller/edit_user/'.$user->id.'"><i class="glyphicon glyphicon-pencil"></i></a>'?></td>
-                      <td><?php echo '<a href="'.base_url().'user_controller/delete_user/'.$user->id.'" onclick="return confirm(\'Anda yakin akan menghapus '.$user->username.'?\')"><i class="glyphicon glyphicon-trash"></i></a>'?></td>
-
-                  </tr>
-                     <?php } ?>
-              </tbody>
-
-              </table>
-              <!-- akhir isi -->
+                      <td><?php echo '<a href="'.base_url().'User_controller/edit_timeline/'.$user->id.'"><i class="material-icons">border_color</i></a>'?></td>
+                      <td><?php echo '<a href="'.base_url().'User_controller/delete_timeline/'.$user->id.'" onclick="return confirm(\'Anda yakin akan menghapus user '.$user->nama.'?\')"><i class="material-icons">restore_from_trash</i></a>'?></td>
+                        </tr>
+                      <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-        <!-- /.col-lg-12 -->
+
+
     </div>
-    <!-- /.row -->
-
-</div>
-<!-- /#page-wrapper -->
-
-</div>
-<!-- wrapper -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript">
-  $(document).ready( function () {
-      $('#table_id').DataTable();
-  } );
-</script>
-</body>
-</html>
+    <script>
+    var table;
+    $(document).ready(function() {
+    table = $('#example').DataTable();
+    });
+    </script>
+  </div>
