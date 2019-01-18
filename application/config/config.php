@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']    = 'http://localhost/BB';
+$config['base_url']    = 'http://localhost/TERAPITANTE';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'Welcome At Brainly Bussiness';
+$config['encryption_key'] = 'Welcome At Terapi Tante';
 
 /*
 |--------------------------------------------------------------------------
