@@ -34,11 +34,14 @@ class C_konten extends CI_Controller{
 
   function riwayatterapi()
   {
+    $id_user = $this->session->userdata('id_user');
     $this->load->model('M_terapi');
-    $data['daftar_sewa'] = $this->M_terapi->ambildatasewa();
+    $datasewa['countdatasewa'] = $this->M_terapi->ambildatasewa($id_user)->num_rows();
+    $datasewa['data_sewa'] = $this->M_terapi->ambildatasewa($id_user)->result();
+
     $data['pilih']='riwayatterapi';
     $this->load->view('templateuser/v_headeruser',$data);
-    $this->load->view('konten/riwayatterapi');
+    $this->load->view('konten/riwayatterapi',$datasewa);
     $this->load->view('templateuser/v_footer');
   }
   function logout(){

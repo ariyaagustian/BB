@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-        <title>Terapi Tante</title>
+        <title>Terapi Tante _ Administrator</title>
 
         <!-- Bootstrap -->
         <link href="<?=base_url()?>assets/admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

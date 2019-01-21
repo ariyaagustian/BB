@@ -53,16 +53,15 @@ class M_terapi extends CI_Model{
   {
       $id_user=$this->session->userdata('id_user');
       $this->db->where('id_user',$id_user);
-      $result = $this->db->get('sewa');
+      $result = $this->db->get('user');
       return $result;
   }
 
-  function ambildatasewa()
+  function ambildatasewa($id_user='')
   {
-      $id_user=$this->session->userdata('id_user');
-      $this->db->where('id_user',$id_user);
-      $result = $this->db->get('sewa');
-      return $result;
+
+    $query=$this->db->query("select  * from sewa where id_user='$id_user' ORDER BY sewa.id_sewa DESC");
+    return $query;
   }
 
   function simpanedituser($id_user,$nama,$tempat_lahir,$tgl_lahir,$alamat,$tlp,$email,$username,$password)

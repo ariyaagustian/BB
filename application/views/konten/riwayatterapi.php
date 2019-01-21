@@ -5,9 +5,9 @@
 					<h2>Riwayat Terapi</h2>
 					<p>Anda dapat melihat riwayat terapi, maupun jadwal booking yang sudah Anda buat. Anda juga dapat melihat detail pesanan ataupun menghapus jadwal sewa tertentu</p>
 				</div>
-
-
-        <!-- notif edit profil -->
+			</div>
+			<div class="row">
+				<!-- notif edit profil -->
         <div class="">
           <?php
             if($this->session->flashdata('hapusbooksukses')) { ?>
@@ -24,10 +24,6 @@
               <?php } ?>
           </div>
           <!-- akhir notif edit profil -->
-
-
-			</div>
-			<div class="row">
         <table class="table table-bordered table-striped" id="example" width="100%">
             <thead>
               <tr>
@@ -44,8 +40,8 @@
 
                 <?php
                 $no=1;
-                  if($daftar_sewa){
-                    foreach($daftar_sewa as $data){
+                  if(!empty($data_sewa)){
+                    foreach($data_sewa as $data){
 
                 ?>
                 <tr>
@@ -65,11 +61,9 @@
                         <?php } ?>
                     </center>
                   </td>
-                  <!-- <td><center><a href="<?php echo base_url() ?>User_controller/detailthread/<?php echo $data->id_thread?>/<?php echo $data->id_timeline?>" role="button" text-align="right"  class="badge badge-info btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Post"><i class="material-icons">border_color</i></a> </center></td> -->
                 </tr>
-
   							<?php
-              }
+              		}
   									} else { ?>
   										<tr>
   							<td colspan="3"><center> Anda Belum Melakukan Terapi </center>

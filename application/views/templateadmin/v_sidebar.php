@@ -1,68 +1,3 @@
-<aside id="qbootstrap-hero">
-    <div class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(images/img_bg_5.jpg);">
-          <div class="overlay"></div>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2 text-center slider-text">
-                <div class="slider-text-inner">
-                  <h1>Dr. <strong> Mary Smith</strong></h1>
-                  <h2 class="doc-holder">Dr. Mary Smith's Plastic Surgery Clinic Welcomes You!</h2>
-                  <h2>Free html5 templates Made by <a href="http://qbootstrap.com/" target="_blank">QBootstrap.com</a></h2>
-                  <p><a class="btn btn-primary btn-lg" href="appointment.html">Make an Appointment</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li style="background-image: url(images/img_bg_1.jpg);">
-          <div class="overlay"></div>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2 text-center slider-text">
-                <div class="slider-text-inner">
-                  <h1>Dr. <strong> Mark Bowman</strong></h1>
-                  <h2 class="doc-holder">Dr. Mark Bowman's Dental Clinic Welcomes You!</h2>
-                  <h2>Free html5 templates Made by <a href="http://qbootstrap.com/" target="_blank">QBootstrap.com</a></h2>
-                  <p><a class="btn btn-primary btn-lg" href="appointment.html">Make an Appointment</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li style="background-image: url(images/img_bg_2.jpg);">
-          <div class="overlay"></div>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2 text-center slider-text">
-                <div class="slider-text-inner">
-                  <h1>Have an Access to <strong>a Health Professional at any time</strong></h1>
-                  <h2>Free html5 templates Made by <a href="http://qbootstrap.com/" target="_blank">QBootstrap.com</a></h2>
-                  <p><a class="btn btn-primary btn-lg btn-learn" href="appointment.html">Make an Appointment</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li style="background-image: url(images/img_bg_3.jpg);">
-          <div class="overlay"></div>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2 text-center slider-text">
-                <div class="slider-text-inner">
-                  <h1>Special offer! <strong>Free Consultation</strong> this month only</h1>
-                  <h2>Free html5 templates Made by <a href="http://qbootstrap.com/" target="_blank">QBootstrap.com</a></h2>
-                  <p><a class="btn btn-primary btn-lg btn-learn" href="appointment.html">Make an Appointment</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        </ul>
-      </div>
-  </aside>
-
 <!-- sidebar -->
       <body class="nav-md">
         <div class="container body">
@@ -85,23 +20,15 @@
                     <ul class="nav side-menu">
                       <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="<?=base_url();?>User_controller/dashadmin">Dashboard</a></li>
+                          <li><a href="<?=base_url();?>C_admin/datauser">Data User</a></li>
                         </ul>
                       </li>
 
-                      <li><a><i class="fa fa-user"></i>User<span class="fa fa-chevron-down"></span></a>
+                      <li><a><i class="fa fa-clipboard"></i>  Data Terapi<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="<?=base_url();?>User_controller/tampil">Data User</a></li>
+                          <li><a href="<?=base_url();?>C_admin/datakalender">Data Kalender</a></li>
+                          <li><a href="<?=base_url();?>C_admin/datasewa">Data Sewa</a></li>
 
-                        </ul>
-                      </li>
-
-                      <li><a><i class="fa fa-clipboard"></i>Post & Timeline<span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                          <li><a href="<?=base_url();?>User_controller/tampil_thread">Thread</a></li>
-                          <li><a href="<?=base_url();?>User_controller/tampil_timeline">Timeline</a></li>
-                          <li><a href="<?=base_url();?>User_controller/tampil_komen">Komentar</a></li>
-                          <!-- <li><a href="icons.html">Cari Mentor</a></li> -->
                         </ul>
                       </li>
 
@@ -140,11 +67,11 @@
                   <ul class="nav navbar-nav navbar-right">
                     <li class="">
                       <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <b> Admin</b>
+                        <b>Admin</b>
                         <span class=" fa fa-angle-down"></span>
                       </a>
                       <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href="<?php echo base_url();?>User_controller/logout">Log Out</a></li>
+                        <li><a href="<?php echo base_url();?>User_controller/logout"><i class="fa fa-sign-out"></i>&ensp;Keluar</a></li>
                       </ul>
                     </li>
 

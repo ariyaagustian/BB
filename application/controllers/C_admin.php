@@ -55,5 +55,16 @@ class C_admin extends CI_Controller{
     $this->M_terapi->simpanjadwalterapi($bulan,$haritgl1,$tahun,$totaltanggal,$tanggalmerah);
   }
 
+  function datauser()
+  {
+    $this->load->model('User_model');
+    $data['daftar_thread'] = $this->User_model->get_thread_all();
+    $data['daftar_timeline'] = $this->User_model->get_timeline_all();
+    if($this->session->userdata('level') == 1){
+          $this->load->view('templateadmin/v_header');
+          $this->load->view('templateadmin/v_sidebar');
+          $this->load->view('admin/timeline_list', $data);
+          $this->load->view('templateadmin/v_footer');
+  }
 
 }
