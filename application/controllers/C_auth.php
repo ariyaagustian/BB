@@ -46,10 +46,11 @@ class C_auth extends CI_Controller{
             $this->load->view('konten/jadwalterapi');
             $this->load->view('templateuser/v_footer');
           } else if($this->session->userdata('hak_akses')==1){
-            // $data['pilih']="dataterapi";
+            $this->load->model('M_terapi');
+            $data['data_user'] = $this->M_terapi->getdatauser();
             $this->load->view('templateadmin/v_header');
             $this->load->view('templateadmin/v_sidebar');
-            $this->load->view('admin/data_user');
+            $this->load->view('admin/data_user',$data);
             $this->load->view('templateadmin/v_footer');
           } else {
             $this->session->set_flashdata('logingagal','Salah');

@@ -2,7 +2,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Data User Surabi</h3>
+                <h3>Data Sewa</h3>
               </div>
 
             </div>
@@ -11,7 +11,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2><i class="fa fa-bars"></i> Data User<small></small></h2>
+                    <h2><i class="fa fa-bars"></i> Data Sewa<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -34,17 +34,17 @@
 
                     <div class="">
                     <?php
-                    if($this->session->flashdata('tambahusersukses')) { ?>
+                    if($this->session->flashdata('tambahsewasukses')) { ?>
                     <div class="alert alert-success alert-dismissible fade in" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
                     </button>
-                    User Baru <strong><?= $this->session->flashdata('tambahusersukses');  ?></strong> ditambahkan
+                    User Baru <strong><?= $this->session->flashdata('tambahsewasukses');  ?></strong> ditambahkan
                   </div>
-                <?php } else if($this->session->flashdata('tambahusergagal')) {?>
+                <?php } else if($this->session->flashdata('tambahsewagagal')) {?>
                   <div class="alert alert-success alert-dismissible fade in" role="alert">
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
                   </button>
-                  User Baru <strong><?= $this->session->flashdata('tambahusergagal');  ?></strong> ditambahkan
+                  User Baru <strong><?= $this->session->flashdata('tambahsewagagal');  ?></strong> ditambahkan
                 </div>
                 <?php } ?>
                     </div>
@@ -52,24 +52,24 @@
 
                     <div class="">
                     <?php
-                    if($this->session->flashdata('editusersukses')) { ?>
+                    if($this->session->flashdata('editsewasukses')) { ?>
                     <div class="alert alert-success alert-dismissible fade in" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
                     </button>
-                    User <strong><?= $this->session->flashdata('editusersukses');  ?></strong> diedit
+                    User <strong><?= $this->session->flashdata('editsewasukses');  ?></strong> diedit
                   </div>
-                <?php } else if($this->session->flashdata('editusergagal')) {?>
+                <?php } else if($this->session->flashdata('editsewagagal')) {?>
                   <div class="alert alert-success alert-dismissible fade in" role="alert">
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
                   </button>
-                  User <strong><?= $this->session->flashdata('editusergagal');  ?></strong> diedit
+                  User <strong><?= $this->session->flashdata('editsewagagal');  ?></strong> diedit
                 </div>
                 <?php } ?>
                     </div>
 
 
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                      <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="fa fa-plus-circle"></i>Tambah User Baru</button>
+                      <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="fa fa-plus-circle"></i>Tambah Sewa Baru</button>
                       <!-- <button type="button" class="btn btn-primary pull-right" data-toggle="modal tooltip" data-target=".bs-example-modal-lg" data-placement="left" title="Tambah Data"><i class="fa fa-plus-circle"></i> Tambah User Baru</button><br><br> -->
 
 
