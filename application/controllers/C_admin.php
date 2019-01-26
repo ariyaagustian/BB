@@ -21,17 +21,19 @@ class C_admin extends CI_Controller{
     $this->load->view('templateadmin/v_footer');
   }
 
-  function simpandatakalender()
+  function savesewa()
   {
     $this->load->model('M_terapi');
-    $savekalender=$this->M_terapi->simpandatakalender();
-    if($savekalender){
-      $this->session->set_flashdata('tambahkalendersukses','Sukses');
+    $a=random_string('md5');
+    $savesewa=$this->M_terapi->savesewa($a);
+    if($savesewa){
+      $this->session->set_flashdata('tambahsewasukses','Sukses');
     } else {
-        $this->session->set_flashdata('tambahkalendergagal','Gagal');
+        $this->session->set_flashdata('tambahsewagagal','Gagal');
     }
-    redirect('C_admin/datauser');
+    redirect('C_admin/datasewa');
   }
+
 
   function savekalender_admin()
   {
@@ -79,10 +81,7 @@ class C_admin extends CI_Controller{
   {
 
   }
-  function simpan_tglmerah()
-  {
 
-  }
 
   function datauser()
   {
@@ -155,6 +154,27 @@ function saveedituser_admin()
                   redirect('C_admin/datakalender');
             }
 
+    function saveeditsewa_admin()
+      {
+            $this->load->model('M_terapi');
+            $no_kwitansi=$this->input->post('no_kwitansi',true);
+            $id_user=$this->input->post('id_user',TRUE);
+            $id_jadwal=$this->input->post('id_jadwal',TRUE);
+            $tgl_sewa=$this->input->post('tgl_sewa',TRUE);
+            $total_bayar=$this->input->post('total_bayar',TRUE);
+            $status=$this->input->post('status',TRUE);
+            $id_sewa=$this->input->post('id_sewa',TRUE);
+
+            $saveedit_admin=$this->M_terapi->saveeditsewa_admin($no_kwitansi,$id_user,$id_jadwal,$tgl_sewa,$total_bayar,$status,$id_sewa);
+
+            if(!$saveedit_admin){
+                  $this->session->set_flashdata('editsewagagal','Gagal');
+            } else {
+                 $this->session->set_flashdata('editsewasukses','Sukses');
+            }
+            redirect('C_admin/datasewa');
+      }
+
     function hapus_user()
         {
             $id_user=$this->uri->segment(3);
@@ -210,9 +230,12 @@ function saveedituser_admin()
       {
         $this->load->model('M_terapi');
         $data['data_sewa'] = $this->M_terapi->getdatasewa();
+        $data['data_user'] = $this->M_terapi->getdatauser();
+        $data['data_sesi'] = $this->M_terapi->getdatasesi();
+        $data['data_kalender'] = $this->M_terapi->getdatakalender();
               $this->load->view('templateadmin/v_header');
               $this->load->view('templateadmin/v_sidebar');
-              $this->load->view('admin/data_user', $data);
+              $this->load->view('admin/data_sewa', $data);
               $this->load->view('templateadmin/v_footer');
 
     }
@@ -221,6 +244,8 @@ function saveedituser_admin()
     {
       $this->load->model('M_terapi');
       $data['data_kalender'] = $this->M_terapi->getdatakalender();
+
+
       $this->load->model('M_terapi');
       $data['data_tgl_merah']=$this->M_terapi->ambildata_tgllibur();
             $this->load->view('templateadmin/v_header');
@@ -229,6 +254,7 @@ function saveedituser_admin()
             $this->load->view('templateadmin/v_footer');
 
   }
+
 
 
 }

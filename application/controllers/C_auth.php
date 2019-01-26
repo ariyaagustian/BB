@@ -41,9 +41,11 @@ class C_auth extends CI_Controller{
           if($this->session->userdata('hak_akses')==2){
             $this->load->model('M_terapi');
             $data['daftar_user'] = $this->M_terapi->ambildatauser();
+            $datakalender['daftar_joinkalender'] = $this->M_terapi->joinkalender();
+            $datakalender['daftar_joinkalenderlbr'] = $this->M_terapi->joinkalenderlibur();
             $data['pilih']="jadwalterapi";
             $this->load->view('templateuser/v_headeruser',$data);
-            $this->load->view('konten/jadwalterapi');
+            $this->load->view('konten/jadwalterapi',$datakalender);
             $this->load->view('templateuser/v_footer');
           } else if($this->session->userdata('hak_akses')==1){
             $this->load->model('M_terapi');

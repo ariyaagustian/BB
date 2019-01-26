@@ -24,8 +24,14 @@
             <h3>Januari 2019</h3></center>
 
               <?php
+									foreach($daftar_joinkalender as $kal){
+										if($kal->status=="aktif"){
+
+											foreach($daftar_joinkalenderlbr as $lbr){
+												if($lbr->id_kalender == $kal->id_kalender){
+
                $tanggala = 1;
-               $tanggalb = 31;
+               $tanggalb = $kal->totaltanggal;
               echo "<table border='1' >";
               echo "<tr >
               <th><center>Senin</center></th>
@@ -40,12 +46,13 @@
                  echo "<tr width='500'>";
                  for($y=1;$y<=7;$y++){
                    if($tanggala<=$tanggalb){
-                     if($x==1 && $y<3){
+										 if($y!=7){
+                     if($x==1 && $y<$kal->haritgl1){
                          echo "<td><center> </center></td>";
                        } else {
                          echo "<td width='200' height='150'><center><big>".$tanggala."</big><br><br> <small><table width='200' >
                           <tr>
-                            <td><a href=''><center>09.00-10.00</center></a></td>
+                            <td><center>09.00-10.00</center></td>
                             <td><a href=''><center>09.00-10.00</center></a></td>
                           </tr>
                           <tr>
@@ -62,6 +69,9 @@
                           </div>";
                          $tanggala++;
                        }
+										 } else {
+											 echo "<td><center>ini hari libur</center></td>ini hari libur";
+										 }
                      } else {
                        echo "<td><center> </center></td>";
                      }
@@ -75,7 +85,7 @@
 
                echo "</table>";
 
-
+						 }}}}
 
               ?>
 

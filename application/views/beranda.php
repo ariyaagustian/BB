@@ -9,8 +9,7 @@
 								<div class="slider-text-inner">
 									<h1><strong>Terapi Tante</strong></h1>
 									<h2 class="doc-holder">Kenyamanan dan Kepuasan Anda Adalah Priotitas Kami</h2>
-
-									<p><a class="btn btn-primary btn-lg" href="appointment.html">Booking Terapi Sekarang !!</a></p>
+									<p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#LOGIN">Booking Terapi Sekarang !!</button></p>
 								</div>
 							</div>
 						</div>
@@ -24,7 +23,7 @@
 								<div class="slider-text-inner">
 									<h1><strong>Terapi Tante</strong></h1>
 									<h2 class="doc-holder">Banyak pelayanan yang akan Anda dapatkan selama terapi</h2>
-									<p><a class="btn btn-primary btn-lg" href="appointment.html">Ayo Booking Sekarang !!</a></p>
+									<p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#LOGIN">Ayo Booking Sekarang !!</button></p>
 								</div>
 							</div>
 						</div>
@@ -38,7 +37,7 @@
 								<div class="slider-text-inner">
 									<h1><strong>Terapi Tante</strong></h1>
 									<h2 class="doc-holder">Harga sangat bersahabat hanya Rp.10.000,-/Jam</h2>
-									<p><a class="btn btn-primary btn-lg btn-learn" href="appointment.html">Cepat Booking Sebelum Penuh !!</a></p>
+									<p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#LOGIN">Cepat Booking Sebelum Penuh !!</button></p>
 								</div>
 							</div>
 						</div>
@@ -52,7 +51,8 @@
 								<div class="slider-text-inner">
 									<h1><strong>Terapi Tante</strong></h1>
 									<h2 class="doc-holder"> <strong>Jumat Berkah</strong>,potongan bagi anak yatim* <br>*Syarat dan Ketentuan Berlaku</h2>
-									<p><a class="btn btn-primary btn-lg btn-learn" href="appointment.html">Tunggu Apa Lagi? Yuk Booking !!</a></p>
+									<p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#LOGIN">Tunggu Apa Lagi? Yuk Booking !!</button></p>
+
 								</div>
 							</div>
 						</div>
@@ -307,6 +307,38 @@
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
 		</div>
 	</div>
+</div>
+</div>
+<!-- akhir modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="LOGIN" tabindex="-1" role="dialog" aria-labelledby="LOGIN" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="LOGIN"><center><big><b> Silakan Login Disini</b></big></center></h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+<form action="<?=base_url()?>C_auth/auth" method="post">
+<div class="form-group">
+<label for="exampleInputEmail1">Username</label>
+<input type="text" class="form-control" name="username" id="username" placeholder="Masukan Username">
+</div>
+<div class="form-group">
+<label for="exampleInputEmail1">Password</label>
+<input type="password" class="form-control" name="password" id="password" placeholder="Masukan Password">
+</div>
+</div>
+<div class="modal-footer">
+<a href="<?=base_url()?>C_auth/register"><button type="button" class="btn btn-warning pull-left">Buat Akun Baru</button></a>
+<button type="submit" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+<button type="submit" class="btn btn-primary">Login</button>
+</form>
+</div>
+</div>
 </div>
 </div>
 <!-- akhir modal -->

@@ -106,7 +106,7 @@ function getdatakalender()
     $simpan_data = array(
             'bulan'        => $bulan,
             'haritgl1'     => $haritgl1,
-            'tahun'        =>  $tahun,
+            'tahun'        => $tahun,
             'totaltanggal' => $totaltanggal
           );
     $simpan = $this->db->insert('kalender', $simpan_data);
@@ -134,6 +134,12 @@ function getdatakalender()
       $this->db->where('id_kalender',$id_kalender);
       $simpan = $this->db->update('kalender', $simpan_data);
       return $simpan;
+  }
+
+  function gettglsewa()
+  {
+    $result = $this->db->get('tgl_sewa');
+    return $result->result();
   }
 
 
@@ -183,12 +189,63 @@ function getdatakalender()
 }
 
 
+function joinkalenderlibur()
+{
+  $result = $this->db->query("SELECT *,k.id_kalender,k.bulan, k.haritgl1,k.tahun,k.totaltanggal from tgl_libur join kalender k on tgl_libur.id_kalender=k.id_kalender ");
+  return $result->result();
+}
+
+
+function joinkalender()
+{
+  $result = $this->db->query("SELECT *, ts.id_tgl, ts.tgl_sewa,ts.id_kalender from kalender join tgl_sewa ts on kalender.id_kalender=ts.id_kalender ");
+  return $result->result();
+}
+
+
+
   //----------------------------------------SEWA
   function getdatasewa()
   {
-    $result = $this->db->get('sewa');
+    $result = $this->db->query("SELECT *, j.jam,u.nama, ts.id_kalender, ts.id_tgl, ts.tgl_sewa, ts.id_kalender, k.bulan, k.tahun, k.haritgl1, k.totaltanggal, k.id_kalender from sewa
+      join jadwal_terapi j on sewa.id_jadwal=j.id_jadwal
+      join user u on sewa.id_user=u.id_user
+      join tgl_sewa ts on sewa.id_tgl=ts.id_tgl
+      join kalender k on k.id_kalender=ts.id_kalender ");
     return $result->result();
   }
+
+    function getdatasesi()
+    {
+      $result = $this->db->get('jadwal_terapi');
+      return $result->result();
+    }
+
+
+    function savesewa($a='')
+    {
+      $simpan_tgl = array(
+              'id_tgl'        => $a,
+              'tgl_sewa'      => $this->input->post('tgl_sewa',true),
+              'id_kalender'   => $this->input->post('id_kalender',TRUE)
+              );
+          $id_tgl=$a;
+          $simpan_tgl = $this->db->insert('tgl_sewa', $simpan_tgl);
+
+      $b=random_string('md5');
+      $simpan_data = array(
+              'id_sewa'       => $b,
+              'no_kwitansi'   => $this->input->post('no_kwitansi',true),
+              'id_user'       => $this->input->post('id_user',TRUE),
+              'id_jadwal'     => $this->input->post('id_jadwal',TRUE),
+              'id_tgl'        => $id_tgl,
+              'total_bayar'   => $this->input->post('total_bayar',TRUE),
+              'status'        => $this->input->post('status',TRUE)
+              );
+
+          $simpan = $this->db->insert('sewa', $simpan_data);
+          return $simpan;
+    }
 
 
 

@@ -18,9 +18,11 @@ class C_konten extends CI_Controller{
   {
     $this->load->model('M_terapi');
     $data['daftar_user'] = $this->M_terapi->ambildatauser();
+    $datakalender['daftar_joinkalender'] = $this->M_terapi->joinkalender();
+    $datakalender['daftar_joinkalenderlbr'] = $this->M_terapi->joinkalenderlibur();
     $data['pilih']='jadwalterapi';
     $this->load->view('templateuser/v_headeruser',$data);
-    $this->load->view('konten/jadwalterapi');
+    $this->load->view('konten/jadwalterapi',$datakalender);
     $this->load->view('templateuser/v_footer');
   }
 

@@ -67,7 +67,7 @@
                         <span class=" fa fa-angle-down"></span>
                       </a>
                       <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href="<?php echo base_url();?>User_controller/logout"><i class="fa fa-sign-out"></i>&ensp;Keluar</a></li>
+                        <li><a href="<?php echo base_url();?>C_auth/logout"><i class="fa fa-sign-out"></i>&ensp;Keluar</a></li>
                       </ul>
                     </li>
 
